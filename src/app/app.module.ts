@@ -8,6 +8,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import { OAuthModule } from 'angular-oauth2-oidc';
 
 import {environment} from "../environments/environment";
+import {CoreModule} from "./core/core.module";
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -22,6 +23,7 @@ export function tokenGetter() {
     AppRoutingModule,
     OAuthModule.forRoot(),
     HttpClientModule,
+    CoreModule,
     JwtModule.forRoot({
       config: {
         tokenGetter,
