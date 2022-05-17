@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  allowedDomains: ['localhost:4200', 'localhost:8080','localhost'],
+  disallowedDomains: ['http://localhost:4200/auth/login', 'http://localhost:8080/auth/login'],
+  solrUrl: '/solr',
+  apiUrl: '',
+  debug: false
 };
 
 /*
