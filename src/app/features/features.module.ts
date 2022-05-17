@@ -30,7 +30,7 @@ import {ToastModule} from "primeng/toast";
 import {ProgressSpinnerModule} from "primeng/progressspinner";
 import {MessagesModule} from "primeng/messages";
 import {MessageModule} from "primeng/message";
-import {SharedModule} from "primeng/api";
+import {MessageService, SharedModule} from "primeng/api";
 import {OverlayPanelModule} from "primeng/overlaypanel";
 import {FeaturesRoutingModule} from "./features-routing.module";
 import {LoginComponent} from "./components/login/login.component";
@@ -79,6 +79,10 @@ import {LoginComponent} from "./components/login/login.component";
     SharedModule,
     ScrollTopModule,
     OverlayPanelModule
+  ],
+  providers: [
+    // DecisionFormService,
+    MessageService
   ]
 })
 export class FeaturesModule { }

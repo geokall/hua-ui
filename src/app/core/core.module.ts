@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import {HeaderComponent} from "./components/header/header.component";
 import {MainContainerComponent} from "./components/main-container/main-container.component";
+import {FeaturesModule} from "../features/features.module";
 
 @NgModule({
   declarations: [
