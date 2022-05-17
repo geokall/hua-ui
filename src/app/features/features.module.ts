@@ -33,12 +33,13 @@ import {MessageModule} from "primeng/message";
 import {SharedModule} from "primeng/api";
 import {OverlayPanelModule} from "primeng/overlaypanel";
 import {FeaturesRoutingModule} from "./features-routing.module";
+import {LoginComponent} from "./components/login/login.component";
 
 
 
 @NgModule({
   declarations: [
-    //login component etc...
+    LoginComponent
   ],
   imports: [
     CommonModule,
