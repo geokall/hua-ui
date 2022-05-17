@@ -10,6 +10,7 @@ import { OAuthModule } from 'angular-oauth2-oidc';
 import {environment} from "../environments/environment";
 import {CoreModule} from "./core/core.module";
 import {FeaturesModule} from "./features/features.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -21,6 +22,7 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     OAuthModule.forRoot(),
     HttpClientModule,
