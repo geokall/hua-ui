@@ -26,13 +26,13 @@ export class HeaderComponent implements OnInit {
       visible:  true
     },
       {
-        label: 'Έγγραφα',
+        label: 'Φοιτητής',
         icon: 'pi pi-file-o',
         routerLinkActiveOptions: { exact: false },
         // visible: (this.auth.isLoggedIn() && !this.auth.isReader() && !this.auth.isExternalReader()),
         visible: true,
         items: [
-          { label: 'Εισαγωγή Νέου', icon: 'pi pi-plus-circle', routerLink: '/decisions/create' },
+          { label: 'Εγγραφή νέου φοιτητή', icon: 'pi pi-plus-circle', routerLink: '/student/create' },
         ]
       },
       // { label: 'Αναζήτηση', icon: 'pi pi-search', routerLink: '/decisions/search',visible: this.auth.isLoggedIn() },

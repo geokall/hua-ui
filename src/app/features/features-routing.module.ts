@@ -23,6 +23,7 @@ const routes: Routes = [
   // {path: '', component: DecisionsSearchComponent, canActivate: [AuthGuard]},
   // {path: 'login', component: LoginComponent},
   // {path: 'taxis_login_callback', component: TaxisLoginComponent},
+  // { path: '', component: DecisionsSearchComponent, canActivate: [AuthGuard] },
   {path: '**', redirectTo: ''}
 ];
 

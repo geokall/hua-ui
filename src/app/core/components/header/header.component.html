@@ -1,28 +1,31 @@
 <p-toast></p-toast>
 <p-menubar [model]="menuItems">
   <div class="login-bar">
-  <span class="nav-user mr-4"  style="width:130px;">
+  <span class="nav-user mr-4" style="width:130px;">
     <i class="pi pi-clock mr-1"></i>
-<!--    <span>{{ (auth.tokenExpiresInSec$) | async | hourMinutesSecs }}</span>-->
+    <!--    <span>{{ (auth.tokenExpiresInSec$) | async | hourMinutesSecs }}</span>-->
     <span>{{ '100' }}</span>
   </span>
 
-    <p><i class="pi pi-user"></i> {{'geokall'}}</p>
-    <a
-      type="button"
-      icon="pi pi-sign-out"
-      style="margin-left:.25em; padding: 0.7em;cursor: pointer;">
-<!--      (click)="logout()"-->
-    <i class="pi pi-sign-out"></i> Αποσύνδεση</a>
+    <p>
+      <i class="pi pi-user"></i>
+      {{'geokall'}}
+    </p>
+    <!--    <a type="button"-->
+    <!--      icon="pi pi-sign-out"-->
+    <!--      style="margin-left:.25em; padding: 0.7em;cursor: pointer;">-->
+    <!--      (click)="logout()"-->
+    <!--    <i class="pi pi-sign-out"></i>-->
+    <!--      Αποσύνδεση-->
+    <!--    </a>-->
   </div>
 </p-menubar>
 <p-menubar>
-  <div class="login-bar">
-    <a
-      type="button"
-      icon="pi pi-sign-in"
-      style="margin-left:.25em; padding: 0.7em;cursor: pointer;">
-<!--      (click)="login()"-->
-    Σύνδεση</a>
-  </div>
+<!--  <div class="login-bar">-->
+<!--    <a type="button"-->
+<!--       icon="pi pi-sign-in"-->
+<!--       style="margin-left:.25em; padding: 0.7em;cursor: pointer;">-->
+<!--            (click)="login()"-->
+<!--      Σύνδεση</a>-->
+<!--  </div>-->
 </p-menubar>
