@@ -3,38 +3,41 @@
     <p-card *ngIf="!loading" [formGroup]="form"
             [header]="!form?.get('id')?.value ? 'Νέος φοιτητής' : 'Επεξεργασία φοιτητή'">
 
-      <!--      <div class="field grid">-->
-      <!--        <label class="col-2" for="author">Σπουδές</label>-->
-      <!--        <div class="col-4" *ngIf="$authorList | async as authorList; else loadingList">-->
-      <!--          <p-dropdown [options]="authorList" [showClear]="true" placeholder="Συντάκτης" [virtualScroll]="true"-->
-      <!--                      [filter]="true"-->
-      <!--                      [filterBy]="'name'"-->
-      <!--                      class="p-inputtext-sm w-full" [editable]="true" [optionValue]="'cd'" [optionLabel]="'name'"-->
-      <!--                      formControlName="author" id="author">-->
-      <!--          </p-dropdown>-->
-      <!--        </div>-->
-      <!--      </div>-->
-
-      <!--          <div class="field grid">-->
-      <!--            <label class="col-2" for="formation">Σχηματισμός</label>-->
-      <!--            <div *ngIf="$formationList | async as formationList; else loadingList" class="col-8">-->
-      <!--              <p-dropdown [options]="formationList" [showClear]="true" placeholder="Σχηματισμός"-->
-      <!--                          class="p-inputtext-sm w-full" [filter]="true" emptyFilterMessage="Χωρίς αποτέλεσμα"-->
-      <!--                          formControlName="formation"-->
-      <!--                          id="formation" optionLabel="description"-->
-      <!--              ></p-dropdown>-->
-      <!--            </div>-->
-      <!--          </div>-->
-
-      <div class="field grid">
-        <label class="col-2" for="studentName">Όνομα</label>
-        <div class="col-10">
-          <input class="p-inputtext-sm w-full" formControlName="studentName" id="studentName"
-                 placeholder="Όνομα"
-                 pInputText
-                 type="text">
+      <div class="card">
+        <h5>test</h5>
+        <div class="formgroup-inline">
+          <div class="field">
+            <label for="firstname5" class="p-sr-only">Firstname</label>
+            <input id="firstname5" type="text"
+                   class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+                   placeholder="Firstname">
+          </div>
+          <div class="field">
+            <label for="lastname5" class="p-sr-only">Lastname</label>
+            <input id="lastname5" type="text"
+                   class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary"
+                   placeholder="Lastname">
+          </div>
         </div>
       </div>
+
+      <!--      <div class="formgroup-inline">-->
+      <!--        <label class="col-2" for="studentName">Όνομα</label>-->
+      <!--        <div>-->
+      <!--          <input class="p-inputtext-sm w-full" formControlName="studentName" id="studentName"-->
+      <!--                 placeholder="Όνομα"-->
+      <!--                 pInputText-->
+      <!--                 type="text">-->
+      <!--        </div>-->
+
+      <!--        <label class="col-2" for="studentName">Όνομα</label>-->
+      <!--        <div>-->
+      <!--          <input class="p-inputtext-sm w-full" formControlName="studentName" id="qq"-->
+      <!--                 placeholder="Όνομα"-->
+      <!--                 pInputText-->
+      <!--                 type="text">-->
+      <!--        </div>-->
+      <!--      </div>-->
 
       <ng-template pTemplate="footer">
         <p-button (onClick)="onSubmit()" [disabled]="form.invalid || form.untouched"
