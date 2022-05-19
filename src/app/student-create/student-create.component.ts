@@ -24,10 +24,10 @@ export class StudentCreateComponent implements OnInit {
   initForm(): void {
     this.form = new FormGroup({
       id: new FormControl(null),
-      studentName: new FormControl(null, Validators.required),
-      formation: new FormControl(null, Validators.required),
-      documentType: new FormControl(null, Validators.required),
-      decisionYear: new FormControl(null, Validators.required),
+      name: new FormControl(null, Validators.required),
+      surname: new FormControl(null, Validators.required),
+      fatherName: new FormControl(null, Validators.required),
+      motherName: new FormControl(null, Validators.required)
 
     });
   }

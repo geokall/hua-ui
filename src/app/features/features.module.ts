@@ -37,7 +37,6 @@ import {LoginComponent} from "./components/login/login.component";
 import {StudentSearchComponent} from "../student-search/student-search.component";
 import {StudentCreateComponent} from "../student-create/student-create.component";
 
-
 @NgModule({
   declarations: [
     LoginComponent,
