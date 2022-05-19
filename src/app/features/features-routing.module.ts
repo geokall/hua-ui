@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 import {StudentSearchComponent} from "../student-search/student-search.component";
+import {AuthGuard} from "../shared/guards/auth.guard";
 
 const routes: Routes = [
   // {
@@ -24,7 +25,7 @@ const routes: Routes = [
   // {path: '', component: DecisionsSearchComponent, canActivate: [AuthGuard]},
   // {path: 'login', component: LoginComponent},
   // {path: 'taxis_login_callback', component: TaxisLoginComponent},
-  { path: '', component: StudentSearchComponent, canActivate: [] },
+  { path: '', component: StudentSearchComponent, canActivate: [AuthGuard] },
   {path: '**', redirectTo: ''}
 ];
 
