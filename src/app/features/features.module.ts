@@ -34,12 +34,14 @@ import {MessageService, SharedModule} from "primeng/api";
 import {OverlayPanelModule} from "primeng/overlaypanel";
 import {FeaturesRoutingModule} from "./features-routing.module";
 import {LoginComponent} from "./components/login/login.component";
+import {StudentSearchComponent} from "../student-search/student-search.component";
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    StudentSearchComponent
   ],
   imports: [
     CommonModule,

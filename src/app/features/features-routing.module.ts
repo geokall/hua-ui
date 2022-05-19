@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
+import {StudentSearchComponent} from "../student-search/student-search.component";
 
 const routes: Routes = [
   // {
@@ -23,7 +24,7 @@ const routes: Routes = [
   // {path: '', component: DecisionsSearchComponent, canActivate: [AuthGuard]},
   // {path: 'login', component: LoginComponent},
   // {path: 'taxis_login_callback', component: TaxisLoginComponent},
-  // { path: '', component: DecisionsSearchComponent, canActivate: [AuthGuard] },
+  { path: '', component: StudentSearchComponent, canActivate: [] },
   {path: '**', redirectTo: ''}
 ];
 
