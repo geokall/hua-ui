@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {StudentDirection} from "../shared/models/student-direction";
 
 @Component({
   selector: 'app-student-create',
@@ -13,12 +14,17 @@ export class StudentCreateComponent implements OnInit {
   loading: boolean = false;
   successModal: boolean = false;
   errorModal: boolean = false;
+  isDisabled: boolean = true;
+
+  studentDirections: StudentDirection[];
+  studentDirection: StudentDirection[];
 
   constructor() {
   }
 
   ngOnInit(): void {
     this.initForm();
+    this.initStudentDirections();
   }
 
   initForm(): void {
@@ -27,9 +33,22 @@ export class StudentCreateComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       surname: new FormControl(null, Validators.required),
       fatherName: new FormControl(null, Validators.required),
-      motherName: new FormControl(null, Validators.required)
-
+      motherName: new FormControl(null, Validators.required),
+      curriculum: new FormControl({value: 'ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)', disabled: true}),
+      studentDirection: new FormGroup({
+        id: new FormControl(null),
+        name: new FormControl(null)
+      })
     });
+  }
+
+  initStudentDirections(): void {
+    this.studentDirections = [
+      {name: 'Τεχνολογίες και Εφαρμογές Ιστού', id: 1},
+      {name: 'Διαχείριση Δικτύων Επικοινωνιών και Υπηρεσιών Επόμενης Γενιάς', id: 2},
+      {name: 'Πληροφοριακά Συστήματα στη Διοίκηση Επιχειρήσεων', id: 3},
+    ]
+
   }
 
   onClear(): void {

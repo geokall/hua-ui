@@ -40,6 +40,25 @@
 
       </div>
 
+      <div class="card">
+        <h3>Στοιχεία φοίτησης</h3>
+
+        <div class="formgroup-inline">
+          <div class="field">
+            <input id="disabled-input" type="text" pInputText [disabled]="isDisabled" formControlName="curriculum"/>
+          </div>
+
+          <div class="field">
+            <p-dropdown [options]="studentDirections"
+                        formGroupName="studentDirection"
+                        placeholder="Επιλογή κατεύθυνσης"
+                        optionLabel="name">
+            </p-dropdown>
+          </div>
+        </div>
+
+      </div>
+
       <ng-template pTemplate="footer">
         <p-button (onClick)="onSubmit()" [disabled]="form.invalid || form.untouched"
                   [icon]="!saving ? 'pi pi-check' : 'pi pi-spin pi-spinner'"
@@ -63,6 +82,7 @@
       <p-button (click)="successModal=false" icon="pi pi-check" label="Ok" styleClass="p-button-text"></p-button>
     </ng-template>
   </p-dialog>
+
   <p-dialog [(visible)]="errorModal" [draggable]="false" [modal]="true" [resizable]="false"
             [style]="{width: '25vw'}" header="Αποτυχία">
     <p class="m-0">Παρουσιάστηκε πρόβλημα στη καταχώριση. Παρακαλώ επικοινωνήστε με τους διαχειριστές του
@@ -71,7 +91,8 @@
       <p-button (click)="errorModal=false" icon="pi pi-check" label="Ok" styleClass="p-button-text"></p-button>
     </ng-template>
   </p-dialog>
-  <!--</div>-->
+
+</div>
 
 <ng-template #loadingList>
   <div class="col-8">
