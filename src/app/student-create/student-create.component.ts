@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {StudentDirection} from "../shared/models/student-direction";
+import {StudentGender} from "../shared/models/student-gender";
 
 @Component({
   selector: 'app-student-create',
@@ -19,12 +20,15 @@ export class StudentCreateComponent implements OnInit {
   studentDirections: StudentDirection[];
   studentDirection: StudentDirection[];
 
+  studentGender: StudentGender[] = [];
+
   constructor() {
   }
 
   ngOnInit(): void {
     this.initForm();
     this.initStudentDirections();
+    this.initStudentGender();
   }
 
   initForm(): void {
@@ -34,11 +38,18 @@ export class StudentCreateComponent implements OnInit {
       surname: new FormControl(null, Validators.required),
       fatherName: new FormControl(null, Validators.required),
       motherName: new FormControl(null, Validators.required),
+      birthDate: new FormControl(null),
+      studentGender: new FormControl(null),
       curriculum: new FormControl({value: 'ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)', disabled: true}),
       studentDirection: new FormGroup({
         id: new FormControl(null),
         name: new FormControl(null)
-      })
+      }),
+      phoneNumber: new FormControl(null),
+      street: new FormControl(null),
+      town: new FormControl(null),
+      postCode: new FormControl(null),
+      afm: new FormControl(null),
     });
   }
 
@@ -48,7 +59,13 @@ export class StudentCreateComponent implements OnInit {
       {name: 'Διαχείριση Δικτύων Επικοινωνιών και Υπηρεσιών Επόμενης Γενιάς', id: 2},
       {name: 'Πληροφοριακά Συστήματα στη Διοίκηση Επιχειρήσεων', id: 3},
     ]
+  }
 
+  initStudentGender(): void {
+    this.studentGender = [
+      {name: 'Άρεν'},
+      {name: 'Θήλυ'}
+    ]
   }
 
   onClear(): void {

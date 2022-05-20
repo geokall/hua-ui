@@ -38,14 +38,37 @@
           </div>
         </div>
 
+        <div class="formgroup-inline">
+          <div class="field">
+            <p-calendar formControlName="birthDate"
+                        placeholder="Ημερομηνία Γέννησης"
+                        [showIcon]="true"
+                        inputId="birthDate">
+            </p-calendar>
+          </div>
+
+          <div class="field">
+            <p-dropdown [options]="studentGender"
+                        formGroupName="studentGender"
+                        placeholder="Φύλο"
+                        optionLabel="name">
+            </p-dropdown>
+          </div>
+
+        </div>
+
       </div>
 
       <div class="card">
         <h3>Στοιχεία φοίτησης</h3>
 
         <div class="formgroup-inline">
+
           <div class="field">
-            <input id="disabled-input" type="text" pInputText [disabled]="isDisabled" formControlName="curriculum"/>
+            <input id="disabled-input"
+                   type="text"
+                   pInputText [disabled]="isDisabled"
+                   formControlName="curriculum"/>
           </div>
 
           <div class="field">
@@ -55,6 +78,58 @@
                         optionLabel="name">
             </p-dropdown>
           </div>
+        </div>
+
+      </div>
+
+      <div class="card">
+        <h3>Στοιχεία επικοινωνίας</h3>
+
+        <div class="formgroup-inline">
+
+          <div class="field">
+            <span class="p-float-label">
+              <input id="street" type="text" pInputText formControlName="street">
+              <label for="street">Διεύθυνση</label>
+            </span>
+          </div>
+
+          <div class="field">
+            <span class="p-float-label">
+              <input id="town" type="text" pInputText formControlName="town">
+              <label for="town">Πόλη</label>
+            </span>
+          </div>
+
+          <div class="field">
+            <span class="p-float-label">
+              <input id="postCode" type="text" pInputText formControlName="postCode">
+              <label for="postCode">Ταχυδρομικός κώδικας</label>
+            </span>
+          </div>
+
+
+        </div>
+
+        <div class="formgroup-inline">
+
+          <div class="field">
+            <p-inputNumber formControlName="phoneNumber"
+                           placeholder="Τηλέφωνο επικοινωνίας"
+                           mode="decimal"
+                           [maxlength]="10"
+                           [useGrouping]="false"
+                           inputId="phoneNumber">
+            </p-inputNumber>
+          </div>
+
+          <div class="field">
+            <span class="p-float-label">
+              <input id="afm" type="text" pInputText formControlName="afm">
+              <label for="afm">Α.Φ.Μ</label>
+            </span>
+          </div>
+
         </div>
 
       </div>
