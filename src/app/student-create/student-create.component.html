@@ -9,15 +9,15 @@
         <div class="formgroup-inline">
           <div class="field">
             <span class="p-float-label">
-              <input id="surname" type="text" pInputText formControlName="surname">
-              <label for="surname">Επώνυμο</label>
+              <input id="surname" type="text" pInputText formControlName="surname" placeholder="Επώνυμο">
+              <label for="surname" class="required"></label>
             </span>
           </div>
 
           <div class="field">
             <span class="p-float-label">
-              <input id="name" type="text" pInputText formControlName="name">
-              <label for="name">Όνομα</label>
+              <input id="name" type="text" pInputText formControlName="name" PLACEHOLDER="Όνομα">
+              <label for="name" class="required"></label>
             </span>
           </div>
         </div>
@@ -25,15 +25,15 @@
         <div class="formgroup-inline">
           <div class="field">
             <span class="p-float-label">
-              <input id="fatherName" type="text" pInputText formControlName="fatherName">
-              <label for="fatherName">Πατρώνυμο</label>
+              <input id="fatherName" type="text" pInputText formControlName="fatherName" placeholder="Πατρώνυμο">
+              <label for="fatherName" class="required"></label>
             </span>
           </div>
 
           <div class="field">
             <span class="p-float-label">
-              <input id="motherName" type="text" pInputText formControlName="motherName">
-              <label for="motherName">Μητρώνυμο</label>
+              <input id="motherName" type="text" pInputText formControlName="motherName" placeholder="Μητρώνυμο">
+              <label for="motherName" class="required"></label>
             </span>
           </div>
         </div>
@@ -42,7 +42,9 @@
           <div class="field">
             <p-calendar formControlName="birthDate"
                         placeholder="Ημερομηνία Γέννησης"
+                        dateFormat="dd/mm/yy"
                         [showIcon]="true"
+                        class="required"
                         inputId="birthDate">
             </p-calendar>
           </div>
@@ -62,16 +64,18 @@
       <div class="card">
         <h3>Στοιχεία φοίτησης</h3>
 
-        <div class="formgroup-inline">
+        <div class="formgrid grid">
 
-          <div class="field">
+          <div class="field col-5">
             <input id="disabled-input"
+                   class="w-full"
                    type="text"
+                   [readOnly]="true"
                    pInputText [disabled]="isDisabled"
                    [formControl]="department"/>
           </div>
 
-          <div class="field">
+          <div class="field col-7">
             <p-dropdown [options]="studentDirections"
                         [formControl]="direction"
                         placeholder="Επιλογή κατεύθυνσης"
@@ -82,56 +86,56 @@
 
       </div>
 
-      <!--      <div class="card">-->
-      <!--        <h3>Στοιχεία επικοινωνίας</h3>-->
+      <div class="card">
+        <h3>Στοιχεία επικοινωνίας</h3>
 
-      <!--        <div class="formgroup-inline">-->
+        <div class="formgroup-inline">
 
-      <!--          <div class="field">-->
-      <!--            <span class="p-float-label">-->
-      <!--              <input id="street" type="text" pInputText [formControl]="street">-->
-      <!--              <label for="street">Διεύθυνση</label>-->
-      <!--            </span>-->
-      <!--          </div>-->
+          <div class="field">
+              <span class="p-float-label">
+                <input id="address" type="text" pInputText [formControl]="address">
+                <label for="address">Διεύθυνση</label>
+              </span>
+          </div>
 
-      <!--          <div class="field">-->
-      <!--            <span class="p-float-label">-->
-      <!--              <input id="town" type="text" pInputText [formControl]="city">-->
-      <!--              <label for="town">Πόλη</label>-->
-      <!--            </span>-->
-      <!--          </div>-->
+          <div class="field">
+              <span class="p-float-label">
+                <input id="city" type="text" pInputText [formControl]="city">
+                <label for="city">Πόλη</label>
+              </span>
+          </div>
 
-      <!--          <div class="field">-->
-      <!--            <span class="p-float-label">-->
-      <!--              <input id="postCode" type="text" pInputText [formControl]="postalCode">-->
-      <!--              <label for="postCode">Ταχυδρομικός κώδικας</label>-->
-      <!--            </span>-->
-      <!--          </div>-->
+          <div class="field">
+              <span class="p-float-label">
+                <input id="postalCode" type="text" pInputText [formControl]="postalCode">
+                <label for="postalCode">Ταχυδρομικός κώδικας</label>
+              </span>
+          </div>
 
-      <!--        </div>-->
+        </div>
 
-      <!--        <div class="formgroup-inline">-->
+        <div class="formgroup-inline">
 
-      <!--          <div class="field">-->
-      <!--            <p-inputNumber [formControl]="mobileNumber"-->
-      <!--                           placeholder="Τηλέφωνο επικοινωνίας"-->
-      <!--                           mode="decimal"-->
-      <!--                           [maxlength]="10"-->
-      <!--                           [useGrouping]="false"-->
-      <!--                           inputId="name">-->
-      <!--            </p-inputNumber>-->
-      <!--          </div>-->
+          <div class="field">
+            <p-inputNumber [formControl]="mobileNumber"
+                           placeholder="Τηλέφωνο επικοινωνίας"
+                           mode="decimal"
+                           [maxlength]="10"
+                           [useGrouping]="false"
+                           inputId="mobileNumber">
+            </p-inputNumber>
+          </div>
 
-      <!--          <div class="field">-->
-      <!--            <span class="p-float-label">-->
-      <!--              <input id="afm" type="text" pInputText [formControl]="vatNumber">-->
-      <!--              <label for="afm">Α.Φ.Μ</label>-->
-      <!--            </span>-->
-      <!--          </div>-->
+          <div class="field">
+              <span class="p-float-label">
+                <input id="vatNumber" type="text" pInputText [formControl]="vatNumber">
+                <label for="vatNumber">Α.Φ.Μ</label>
+              </span>
+          </div>
 
-      <!--        </div>-->
+        </div>
 
-      <!--      </div>-->
+      </div>
 
       <ng-template pTemplate="footer">
         <p-button (onClick)="onSubmit()" [disabled]="form.invalid || form.untouched"

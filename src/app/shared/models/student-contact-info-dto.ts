@@ -1,4 +1,4 @@
-export interface StudentContactInfo {
+export interface StudentContactInfoDTO {
   id: number;
   address: string;
   city: string;

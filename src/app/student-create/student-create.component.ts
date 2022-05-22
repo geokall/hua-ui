@@ -3,6 +3,11 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {StudentDirection} from "../shared/models/student-direction";
 import {StudentGender} from "../shared/models/student-gender";
 import {environment} from "../../environments/environment";
+import {StudentService} from "../features/services/student.service";
+import {Router} from "@angular/router";
+import {StudentDTO} from "../shared/models/student-d-t-o";
+import {first} from "rxjs";
+import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-student-create',
@@ -24,7 +29,8 @@ export class StudentCreateComponent implements OnInit {
 
   showDebug = environment.debug;
 
-  constructor() {
+  constructor(private api: StudentService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -40,36 +46,36 @@ export class StudentCreateComponent implements OnInit {
       name: new FormControl(null, Validators.required),
       fatherName: new FormControl(null, Validators.required),
       motherName: new FormControl(null, Validators.required),
-      birthDate: new FormControl(null),
+      birthDate: new FormControl(null, Validators.required),
       gender: new FormControl(null),
       studentDetails: new FormGroup({
         id: new FormControl(null),
-        department: new FormControl({value: 'ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)', disabled: true}),
-        direction: new FormControl(null),
+        department: new FormControl('ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)'),
+        direction: new FormControl(null, Validators.required),
       }),
       studentContactInfo: new FormGroup({
         id: new FormControl(null),
         address: new FormControl(null),
         city: new FormControl(null),
         postalCode: new FormControl(null),
-        mobileNumber: new FormControl(null),
-        vatNumber: new FormControl(null),
+        mobileNumber: new FormControl(null, Validators.required),
+        vatNumber: new FormControl(null, Validators.required),
       })
     });
   }
 
   initStudentDirections(): void {
     this.studentDirections = [
-      {name: 'Τεχνολογίες και Εφαρμογές Ιστού', id: 1},
-      {name: 'Διαχείριση Δικτύων Επικοινωνιών και Υπηρεσιών Επόμενης Γενιάς', id: 2},
-      {name: 'Πληροφοριακά Συστήματα στη Διοίκηση Επιχειρήσεων', id: 3},
+      {id: 1, name: 'Τεχνολογίες και Εφαρμογές Ιστού'},
+      {id: 2, name: 'Διαχείριση Δικτύων Επικοινωνιών και Υπηρεσιών Επόμενης Γενιάς'},
+      {id: 3, name: 'Πληροφοριακά Συστήματα στη Διοίκηση Επιχειρήσεων'},
     ]
   }
 
   initStudentGender(): void {
     this.studentGenders = [
-      {name: 'Άρεν', id: 1},
-      {name: 'Θήλυ', id: 2}
+      {id: 1, name: 'Άρεν',},
+      {id: 2, name: 'Θήλυ'}
     ]
   }
 
@@ -78,14 +84,14 @@ export class StudentCreateComponent implements OnInit {
   }
 
   onSubmit(): void {
-    // this.saving = true;
-    // const form = this.form.value as any; //as student form
-    // this.form.reset(form);
-    // this.decisionFormService
-    //   .save(form)
-    //   .pipe(first())
-    //   .subscribe((res: HttpResponse<any>) => this.successModal = true, (error: HttpErrorResponse) => this.errorModal = true)
-    //   .add(() => this.saving = false);
+    this.saving = true;
+    const form = this.form.value as StudentDTO;
+    this.form.reset(form);
+
+    this.api.createStudent(this.form)
+      .pipe(first())
+      .subscribe((res: HttpResponse<any>) => this.successModal = true, (error: HttpErrorResponse) => this.errorModal = true)
+      .add(() => this.saving = false);
   }
 
   get gender(): FormControl {
@@ -108,8 +114,8 @@ export class StudentCreateComponent implements OnInit {
     return this.form.get('studentContactInfo') as FormGroup;
   }
 
-  get street(): FormControl {
-    return this.studentContactInfos.get('street') as FormControl;
+  get address(): FormControl {
+    return this.studentContactInfos.get('address') as FormControl;
   }
 
   get city(): FormControl {
