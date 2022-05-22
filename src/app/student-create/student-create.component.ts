@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {StudentDirection} from "../shared/models/student-direction";
 import {StudentGender} from "../shared/models/student-gender";
+import {environment} from "../../environments/environment";
 
 @Component({
   selector: 'app-student-create',
@@ -16,10 +17,10 @@ export class StudentCreateComponent implements OnInit {
   successModal: boolean = false;
   errorModal: boolean = false;
   isDisabled: boolean = true;
+  showDebug = environment.debug;
+
 
   studentDirections: StudentDirection[];
-  studentDirection: StudentDirection[];
-
   studentGender: StudentGender[] = [];
 
   constructor() {
@@ -34,22 +35,25 @@ export class StudentCreateComponent implements OnInit {
   initForm(): void {
     this.form = new FormGroup({
       id: new FormControl(null),
-      name: new FormControl(null, Validators.required),
       surname: new FormControl(null, Validators.required),
+      name: new FormControl(null, Validators.required),
       fatherName: new FormControl(null, Validators.required),
       motherName: new FormControl(null, Validators.required),
       birthDate: new FormControl(null),
-      studentGender: new FormControl(null),
-      curriculum: new FormControl({value: 'ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)', disabled: true}),
-      studentDirection: new FormGroup({
+      gender: new FormControl(null),
+      studentDetails: new FormGroup({
         id: new FormControl(null),
-        name: new FormControl(null)
+        department: new FormControl({value: 'ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)', disabled: true}),
+        direction: new FormControl(null),
       }),
-      phoneNumber: new FormControl(null),
-      street: new FormControl(null),
-      town: new FormControl(null),
-      postCode: new FormControl(null),
-      afm: new FormControl(null),
+      studentContactInfo: new FormGroup({
+        id: new FormControl(null),
+        address: new FormControl(null),
+        city: new FormControl(null),
+        postalCode: new FormControl(null),
+        mobileNumber: new FormControl(null),
+        vatNumber: new FormControl(null),
+      })
     });
   }
 
@@ -81,6 +85,42 @@ export class StudentCreateComponent implements OnInit {
     //   .pipe(first())
     //   .subscribe((res: HttpResponse<any>) => this.successModal = true, (error: HttpErrorResponse) => this.errorModal = true)
     //   .add(() => this.saving = false);
+  }
+
+  get studentDetails(): FormGroup {
+    return this.form.get('studentDetails') as FormGroup;
+  }
+
+  get department(): FormControl {
+    return this.studentDetails.get('department') as FormControl;
+  }
+
+  get direction(): FormControl {
+    return this.studentDetails.get('direction') as FormControl;
+  }
+
+  get studentContactInfo(): FormGroup {
+    return this.form.get('studentContactInfo') as FormGroup;
+  }
+
+  get street(): FormControl {
+    return this.form.get('street') as FormControl;
+  }
+
+  get city(): FormControl {
+    return this.form.get('city') as FormControl;
+  }
+
+  get postalCode(): FormControl {
+    return this.form.get('postalCode') as FormControl;
+  }
+
+  get mobileNumber(): FormControl {
+    return this.form.get('mobileNumber') as FormControl;
+  }
+
+  get vatNumber(): FormControl {
+    return this.form.get('vatNumber') as FormControl;
   }
 
 }
