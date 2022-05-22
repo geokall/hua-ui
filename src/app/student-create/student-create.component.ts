@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {StudentDirection} from "../shared/models/student-direction";
-import {StudentGender} from "../shared/models/student-gender";
+import {StudentGender} from "../shared/models/student-gender-enum";
 import {environment} from "../../environments/environment";
 import {StudentService} from "../features/services/student.service";
 import {Router} from "@angular/router";
-import {StudentDTO} from "../shared/models/student-d-t-o";
+import {StudentDTO} from "../shared/models/student-dto";
 import {first} from "rxjs";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 
@@ -25,7 +25,13 @@ export class StudentCreateComponent implements OnInit {
   isDisabled: boolean = true;
 
   studentDirections: StudentDirection[];
-  studentGenders: StudentGender[] = [];
+
+  // studentGenders: StudentGender[] = [];
+
+  studentGenders: any[] = Object.keys(StudentGender)
+    .map((item) => { // @ts-ignore
+      return {key: item, value: StudentGender[item]}
+    });
 
   showDebug = environment.debug;
 
@@ -36,7 +42,6 @@ export class StudentCreateComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.initStudentDirections();
-    this.initStudentGender();
   }
 
   initForm(): void {
@@ -72,13 +77,6 @@ export class StudentCreateComponent implements OnInit {
     ]
   }
 
-  initStudentGender(): void {
-    this.studentGenders = [
-      {id: 1, name: 'Άρεν',},
-      {id: 2, name: 'Θήλυ'}
-    ]
-  }
-
   onClear(): void {
     // this.form.reset(this.form); //not sure
   }
@@ -88,7 +86,7 @@ export class StudentCreateComponent implements OnInit {
     const form = this.form.value as StudentDTO;
     this.form.reset(form);
 
-    this.api.createStudent(this.form)
+    this.api.createStudent(form)
       .pipe(first())
       .subscribe((res: HttpResponse<any>) => this.successModal = true, (error: HttpErrorResponse) => this.errorModal = true)
       .add(() => this.saving = false);

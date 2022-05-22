@@ -1,5 +1,5 @@
-import {StudentGender} from "./student-gender";
-import {StudentDetailsDTO} from "./student-details-d-t-o";
+import {StudentGender} from "./student-gender-enum";
+import {StudentDetailsDTO} from "./student-details-dto";
 import {StudentContactInfoDTO} from "./student-contact-info-dto";
 
 export interface StudentDTO {

@@ -1,11 +1,12 @@
 {
-  "/auth": {
+  "/student/create": {
     "target": "http://localhost:8080",
     "secure": false,
     "changeOrigin": true
   },
-  "/users/search": {
+  "/auth": {
     "target": "http://localhost:8080",
-    "secure": false
+    "secure": false,
+    "changeOrigin": true
   }
 }
