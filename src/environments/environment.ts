@@ -8,7 +8,7 @@ export const environment = {
   disallowedDomains: ['http://localhost:4200/auth/login', 'http://localhost:8080/auth/login'],
   solrUrl: '/solr',
   apiUrl: '',
-  debug: false
+  debug: true
 };
 
 /*

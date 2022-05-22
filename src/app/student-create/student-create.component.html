@@ -48,8 +48,8 @@
           </div>
 
           <div class="field">
-            <p-dropdown [options]="studentGender"
-                        formGroupName="studentGender"
+            <p-dropdown [options]="studentGenders"
+                        [formControl]="gender"
                         placeholder="Φύλο"
                         optionLabel="name">
             </p-dropdown>
@@ -82,57 +82,56 @@
 
       </div>
 
-      <div class="card">
-        <h3>Στοιχεία επικοινωνίας</h3>
+      <!--      <div class="card">-->
+      <!--        <h3>Στοιχεία επικοινωνίας</h3>-->
 
-        <div class="formgroup-inline">
+      <!--        <div class="formgroup-inline">-->
 
-          <div class="field">
-            <span class="p-float-label">
-              <input id="street" type="text" pInputText [formControl]="street">
-              <label for="street">Διεύθυνση</label>
-            </span>
-          </div>
+      <!--          <div class="field">-->
+      <!--            <span class="p-float-label">-->
+      <!--              <input id="street" type="text" pInputText [formControl]="street">-->
+      <!--              <label for="street">Διεύθυνση</label>-->
+      <!--            </span>-->
+      <!--          </div>-->
 
-          <div class="field">
-            <span class="p-float-label">
-              <input id="town" type="text" pInputText [formControl]="city">
-              <label for="town">Πόλη</label>
-            </span>
-          </div>
+      <!--          <div class="field">-->
+      <!--            <span class="p-float-label">-->
+      <!--              <input id="town" type="text" pInputText [formControl]="city">-->
+      <!--              <label for="town">Πόλη</label>-->
+      <!--            </span>-->
+      <!--          </div>-->
 
-          <div class="field">
-            <span class="p-float-label">
-              <input id="postCode" type="text" pInputText [formControl]="postalCode">
-              <label for="postCode">Ταχυδρομικός κώδικας</label>
-            </span>
-          </div>
+      <!--          <div class="field">-->
+      <!--            <span class="p-float-label">-->
+      <!--              <input id="postCode" type="text" pInputText [formControl]="postalCode">-->
+      <!--              <label for="postCode">Ταχυδρομικός κώδικας</label>-->
+      <!--            </span>-->
+      <!--          </div>-->
 
+      <!--        </div>-->
 
-        </div>
+      <!--        <div class="formgroup-inline">-->
 
-        <div class="formgroup-inline">
+      <!--          <div class="field">-->
+      <!--            <p-inputNumber [formControl]="mobileNumber"-->
+      <!--                           placeholder="Τηλέφωνο επικοινωνίας"-->
+      <!--                           mode="decimal"-->
+      <!--                           [maxlength]="10"-->
+      <!--                           [useGrouping]="false"-->
+      <!--                           inputId="name">-->
+      <!--            </p-inputNumber>-->
+      <!--          </div>-->
 
-          <div class="field">
-            <p-inputNumber [formControl]="mobileNumber"
-                           placeholder="Τηλέφωνο επικοινωνίας"
-                           mode="decimal"
-                           [maxlength]="10"
-                           [useGrouping]="false"
-                           inputId="mobileNumber">
-            </p-inputNumber>
-          </div>
+      <!--          <div class="field">-->
+      <!--            <span class="p-float-label">-->
+      <!--              <input id="afm" type="text" pInputText [formControl]="vatNumber">-->
+      <!--              <label for="afm">Α.Φ.Μ</label>-->
+      <!--            </span>-->
+      <!--          </div>-->
 
-          <div class="field">
-            <span class="p-float-label">
-              <input id="afm" type="text" pInputText [formControl]="vatNumber">
-              <label for="afm">Α.Φ.Μ</label>
-            </span>
-          </div>
+      <!--        </div>-->
 
-        </div>
-
-      </div>
+      <!--      </div>-->
 
       <ng-template pTemplate="footer">
         <p-button (onClick)="onSubmit()" [disabled]="form.invalid || form.untouched"
@@ -167,6 +166,10 @@
     </ng-template>
   </p-dialog>
 
+  <ng-container *ngIf="showDebug">
+    <pre>{{form.value | json}}</pre>
+  </ng-container>
+
 </div>
 
 <ng-template #loadingList>
@@ -174,7 +177,3 @@
     <p-skeleton height="2rem" styleClass="mb-2"></p-skeleton>
   </div>
 </ng-template>
-
-<ng-container *ngIf="showDebug">
-  <pre>{{form.value | json}}</pre>
-</ng-container>

@@ -12,16 +12,17 @@ import {environment} from "../../environments/environment";
 export class StudentCreateComponent implements OnInit {
 
   form: FormGroup;
+
   saving: boolean = false;
   loading: boolean = false;
   successModal: boolean = false;
   errorModal: boolean = false;
   isDisabled: boolean = true;
-  showDebug = environment.debug;
-
 
   studentDirections: StudentDirection[];
-  studentGender: StudentGender[] = [];
+  studentGenders: StudentGender[] = [];
+
+  showDebug = environment.debug;
 
   constructor() {
   }
@@ -66,9 +67,9 @@ export class StudentCreateComponent implements OnInit {
   }
 
   initStudentGender(): void {
-    this.studentGender = [
-      {name: 'Άρεν'},
-      {name: 'Θήλυ'}
+    this.studentGenders = [
+      {name: 'Άρεν', id: 1},
+      {name: 'Θήλυ', id: 2}
     ]
   }
 
@@ -87,6 +88,10 @@ export class StudentCreateComponent implements OnInit {
     //   .add(() => this.saving = false);
   }
 
+  get gender(): FormControl {
+    return this.form.get('gender') as FormControl;
+  }
+
   get studentDetails(): FormGroup {
     return this.form.get('studentDetails') as FormGroup;
   }
@@ -99,28 +104,28 @@ export class StudentCreateComponent implements OnInit {
     return this.studentDetails.get('direction') as FormControl;
   }
 
-  get studentContactInfo(): FormGroup {
+  get studentContactInfos(): FormGroup {
     return this.form.get('studentContactInfo') as FormGroup;
   }
 
   get street(): FormControl {
-    return this.form.get('street') as FormControl;
+    return this.studentContactInfos.get('street') as FormControl;
   }
 
   get city(): FormControl {
-    return this.form.get('city') as FormControl;
+    return this.studentContactInfos.get('city') as FormControl;
   }
 
   get postalCode(): FormControl {
-    return this.form.get('postalCode') as FormControl;
+    return this.studentContactInfos.get('postalCode') as FormControl;
   }
 
   get mobileNumber(): FormControl {
-    return this.form.get('mobileNumber') as FormControl;
+    return this.studentContactInfos.get('mobileNumber') as FormControl;
   }
 
   get vatNumber(): FormControl {
-    return this.form.get('vatNumber') as FormControl;
+    return this.studentContactInfos.get('vatNumber') as FormControl;
   }
 
 }
