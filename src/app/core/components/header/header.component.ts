@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MenuItem, MessageService} from 'primeng/api';
 
 @Component({
@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit {
         // visible: (this.auth.isLoggedIn() && !this.auth.isReader() && !this.auth.isExternalReader()),
         visible: true,
         items: [
-          { label: 'Εγγραφή νέου φοιτητή', icon: 'pi pi-plus-circle', routerLink: '/student/create' },
+          {label: 'Εγγραφή νέου φοιτητή', icon: 'pi pi-plus-circle', routerLink: 'actions/create'},
         ]
       },
       // { label: 'Αναζήτηση', icon: 'pi pi-search', routerLink: '/decisions/search',visible: this.auth.isLoggedIn() },

@@ -26,8 +26,6 @@ export class StudentCreateComponent implements OnInit {
 
   studentDirections: StudentDirection[];
 
-  // studentGenders: StudentGender[] = [];
-
   studentGenders: any[] = Object.keys(StudentGender)
     .map((item) => { // @ts-ignore
       return {key: item, value: StudentGender[item]}

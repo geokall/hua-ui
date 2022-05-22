@@ -6,7 +6,7 @@ import {StudentCreateComponent} from "../student-create/student-create.component
 
 const routes: Routes = [
   {
-    path: 'student',
+    path: 'actions',
     canActivate: [AuthGuard],
     children: [
       {
