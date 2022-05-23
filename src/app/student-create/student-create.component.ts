@@ -6,8 +6,6 @@ import {environment} from "../../environments/environment";
 import {StudentService} from "../features/services/student.service";
 import {Router} from "@angular/router";
 import {StudentDTO} from "../shared/models/student-dto";
-import {first} from "rxjs";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-student-create',
@@ -84,10 +82,11 @@ export class StudentCreateComponent implements OnInit {
     const form = this.form.value as StudentDTO;
     this.form.reset(form);
 
-    this.api.createStudent(form)
-      .pipe(first())
-      .subscribe((res: HttpResponse<any>) => this.successModal = true, (error: HttpErrorResponse) => this.errorModal = true)
-      .add(() => this.saving = false);
+    this.api.createStudent(form).subscribe(result => {
+      this.successModal = true;
+    }, error => {
+      this.successModal = false;
+    })
   }
 
   get gender(): FormControl {
