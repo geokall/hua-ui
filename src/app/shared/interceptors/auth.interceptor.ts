@@ -1,6 +1,6 @@
 import {Router} from '@angular/router';
 import {Injectable} from '@angular/core';
-import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {tap} from 'rxjs/operators';
 import {AuthService} from "../auth.service";
@@ -15,12 +15,12 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(tap(() => {
       },
       (err: any) => {
-        // if (err instanceof HttpErrorResponse) {
-        //   if ((err.status == 401 || err.status == 403) && !this.auth.isLoggedIn()) {
-        //     this.auth.logout();
-        //   }
-        //   return;
-        // }
+        if (err instanceof HttpErrorResponse) {
+          if ((err.status == 401 || err.status == 403) && !this.auth.isLoggedIn()) {
+            this.auth.logout();
+          }
+          return;
+        }
       }));
   }
 }

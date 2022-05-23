@@ -3,6 +3,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {StudentSearchComponent} from "../student-search/student-search.component";
 import {AuthGuard} from "../shared/guards/auth.guard";
 import {StudentCreateComponent} from "../student-create/student-create.component";
+import {LoginComponent} from "./components/login/login.component";
 
 const routes: Routes = [
   {
@@ -24,8 +25,7 @@ const routes: Routes = [
     ]
   },
   // {path: 'users-management', component: UserManagementComponent, canActivate: [AuthGuard, AdminGuard]},
-  // {path: 'login', component: LoginComponent},
-  // {path: 'taxis_login_callback', component: TaxisLoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: '', component: StudentSearchComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: ''}
 ];

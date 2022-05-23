@@ -6,6 +6,7 @@ import {ButtonModule} from 'primeng/button';
 import {ToastModule} from 'primeng/toast';
 import {HeaderComponent} from "./components/header/header.component";
 import {MainContainerComponent} from "./components/main-container/main-container.component";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {MainContainerComponent} from "./components/main-container/main-container
     MenubarModule,
     ButtonModule,
     ToastModule,
+    SharedModule,
     // SharedModule
   ],
   exports: [

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MenuItem, MessageService} from 'primeng/api';
+import {AuthService} from "../../../shared/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,11 @@ export class HeaderComponent implements OnInit {
 
   public menuItems: MenuItem[] = [];
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+              public router: Router,
+              public auth: AuthService) {
+    this.auth.authStatusChanged.subscribe(result => this.initMenuItems());
+  }
 
   ngOnInit(): void {
     this.initMenuItems();
@@ -21,14 +27,14 @@ export class HeaderComponent implements OnInit {
       label: 'Αρχική',
       icon: 'pi pi-home',
       routerLink: ['/'],
-      routerLinkActiveOptions: { exact: true },
-      // visible:  this.auth.isLoggedIn()
-      visible:  true
+      routerLinkActiveOptions: {exact: true},
+      visible: this.auth.isLoggedIn()
+      // visible:  true
     },
       {
         label: 'Φοιτητής',
         icon: 'pi pi-file-o',
-        routerLinkActiveOptions: { exact: false },
+        routerLinkActiveOptions: {exact: false},
         // visible: (this.auth.isLoggedIn() && !this.auth.isReader() && !this.auth.isExternalReader()),
         visible: true,
         items: [

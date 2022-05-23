@@ -1,10 +1,10 @@
 <p-toast></p-toast>
-<p-menubar [model]="menuItems">
+<p-menubar [model]="menuItems" *ngIf="auth.isLoggedIn()">
   <div class="login-bar">
-  <span class="nav-user mr-4" style="width:130px;">
+  <span class="nav-user mr-4" *ngIf="auth.isLoggedIn()" style="width:130px;">
     <i class="pi pi-clock mr-1"></i>
     <!--    <span>{{ (auth.tokenExpiresInSec$) | async | hourMinutesSecs }}</span>-->
-    <span>{{ '100' }}</span>
+    <span>{{ (auth.tokenExpiresInSec$) | async | hourMinutesSecs }}</span>
   </span>
 
     <p>
