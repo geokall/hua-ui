@@ -34,8 +34,8 @@ import {MessageService, SharedModule} from "primeng/api";
 import {OverlayPanelModule} from "primeng/overlaypanel";
 import {FeaturesRoutingModule} from "./features-routing.module";
 import {LoginComponent} from "./components/login/login.component";
-import {StudentSearchComponent} from "../student-search/student-search.component";
-import {StudentCreateComponent} from "../student-create/student-create.component";
+import {StudentSearchComponent} from "./components/student-search/student-search.component";
+import {StudentCreateComponent} from "./components/student-create/student-create.component";
 
 @NgModule({
   declarations: [
@@ -44,7 +44,6 @@ import {StudentCreateComponent} from "../student-create/student-create.component
     StudentCreateComponent
   ],
   imports: [
-    CommonModule,
     CommonModule,
     ReactiveFormsModule,
     FormsModule,

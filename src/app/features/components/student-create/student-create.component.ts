@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {StudentDirection} from "../shared/models/student-direction";
-import {StudentGender} from "../shared/models/student-gender-enum";
-import {environment} from "../../environments/environment";
-import {StudentService} from "../features/services/student.service";
+import {StudentDirection} from "../../../shared/models/student-direction";
+import {StudentGender} from "../../../shared/models/student-gender-enum";
+import {environment} from "../../../../environments/environment";
+import {StudentService} from "../../services/student.service";
 import {Router} from "@angular/router";
-import {StudentDTO} from "../shared/models/student-dto";
+import {StudentDTO} from "../../../shared/models/student-dto";
 
 @Component({
   selector: 'app-student-create',
