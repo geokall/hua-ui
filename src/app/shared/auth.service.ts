@@ -25,18 +25,20 @@ export class AuthService {
   isLoggedIn(): boolean {
     const token = this.getJwtToken();
 
-    if (token && !this.isTokenExpiredMilliseconds(token)) {
+    if (token && !this.jwt.isTokenExpired(token)) {
       return true;
     }
 
     return false;
   }
 
-  isTokenExpiredMilliseconds(token: string): boolean {
-    const expiresAtMillis = this.jwt.getTokenExpirationDate(token) ? new Date(this.jwt.getTokenExpirationDate(token)!.getTime() / 1000) : 0;
-    const now = new Date().getTime();
-    return now > expiresAtMillis;
-  }
+  // isTokenExpiredMilliseconds(token: string): boolean {
+  //   const expiresAtMillis = this.jwt.getTokenExpirationDate(token) ? new Date(this.jwt.getTokenExpirationDate(token)!.getTime() / 1000) : 0;
+  //   const now = new Date().getTime();
+  //   console.log(expiresAtMillis);
+  //   console.log(now);
+  //   return now > expiresAtMillis;
+  // }
 
   getJwtToken(): string {
     return this.jwt.tokenGetter();

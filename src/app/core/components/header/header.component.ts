@@ -46,4 +46,13 @@ export class HeaderComponent implements OnInit {
     ];
   }
 
+  logout(): void {
+    this.auth.logout();
+    this.messageService.add({severity: 'success', detail: 'Αποσυνδεθήκατε'});
+    this.router.navigateByUrl('/login');
+  }
+
+  login(): void {
+    this.router.navigateByUrl('/login');
+  }
 }
