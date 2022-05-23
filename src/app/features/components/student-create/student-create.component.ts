@@ -6,6 +6,7 @@ import {environment} from "../../../../environments/environment";
 import {StudentService} from "../../services/student.service";
 import {Router} from "@angular/router";
 import {StudentDTO} from "../../../shared/models/student-dto";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'app-student-create',
@@ -32,6 +33,7 @@ export class StudentCreateComponent implements OnInit {
   showDebug = environment.debug;
 
   constructor(private api: StudentService,
+              private messageService: MessageService,
               private router: Router) {
   }
 
@@ -85,7 +87,12 @@ export class StudentCreateComponent implements OnInit {
     this.api.createStudent(form).subscribe(result => {
       this.successModal = true;
     }, error => {
+      this.saving = false;
       this.successModal = false;
+      this.messageService.add({
+        severity: 'error',
+        detail: 'Υπάρχει φοιτητής με ίδιο Α.Φ.Μ ή κινητό τηλέφωνο'
+      });
     })
   }
 
