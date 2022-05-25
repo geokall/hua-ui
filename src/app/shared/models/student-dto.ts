@@ -1,6 +1,4 @@
 import {StudentGender} from "./student-gender-enum";
-import {StudentDetailsDTO} from "./student-details-dto";
-import {StudentContactInfoDTO} from "./student-contact-info-dto";
 
 export interface StudentDTO {
   id?: number;
@@ -9,7 +7,14 @@ export interface StudentDTO {
   fatherName?: string;
   motherName?: string;
   birthDate?: string;
-  gender?: StudentGender
-  studentDetails?: StudentDetailsDTO
-  studentContactInfo?: StudentContactInfoDTO
+  gender?: StudentGender;
+
+  department?: string;
+  direction?: string;
+
+  address?: string;
+  city?: string;
+  postalCode?: string;
+  mobileNumber?: string;
+  vatNumber?: string;
 }

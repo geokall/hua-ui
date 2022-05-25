@@ -47,23 +47,17 @@ export class StudentCreateComponent implements OnInit {
       id: new FormControl(null),
       surname: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
-      fatherName: new FormControl(null, Validators.required),
-      motherName: new FormControl(null, Validators.required),
-      birthDate: new FormControl(null, Validators.required),
+      fatherName: new FormControl(null),
+      motherName: new FormControl(null),
+      birthDate: new FormControl(null),
       gender: new FormControl(null),
-      studentDetails: new FormGroup({
-        id: new FormControl(null),
-        department: new FormControl('ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)'),
-        direction: new FormControl(null, Validators.required),
-      }),
-      studentContactInfo: new FormGroup({
-        id: new FormControl(null),
-        address: new FormControl(null),
-        city: new FormControl(null),
-        postalCode: new FormControl(null),
-        mobileNumber: new FormControl(null, Validators.required),
-        vatNumber: new FormControl(null, Validators.required),
-      })
+      department: new FormControl('ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)'),
+      direction: new FormControl(null, Validators.required),
+      address: new FormControl(null),
+      city: new FormControl(null),
+      postalCode: new FormControl(null),
+      mobileNumber: new FormControl(null, Validators.required),
+      vatNumber: new FormControl(null, Validators.required),
     });
   }
 
@@ -100,40 +94,32 @@ export class StudentCreateComponent implements OnInit {
     return this.form.get('gender') as FormControl;
   }
 
-  get studentDetails(): FormGroup {
-    return this.form.get('studentDetails') as FormGroup;
-  }
-
   get department(): FormControl {
-    return this.studentDetails.get('department') as FormControl;
+    return this.form.get('department') as FormControl;
   }
 
   get direction(): FormControl {
-    return this.studentDetails.get('direction') as FormControl;
-  }
-
-  get studentContactInfos(): FormGroup {
-    return this.form.get('studentContactInfo') as FormGroup;
+    return this.form.get('direction') as FormControl;
   }
 
   get address(): FormControl {
-    return this.studentContactInfos.get('address') as FormControl;
+    return this.form.get('address') as FormControl;
   }
 
   get city(): FormControl {
-    return this.studentContactInfos.get('city') as FormControl;
+    return this.form.get('city') as FormControl;
   }
 
   get postalCode(): FormControl {
-    return this.studentContactInfos.get('postalCode') as FormControl;
+    return this.form.get('postalCode') as FormControl;
   }
 
   get mobileNumber(): FormControl {
-    return this.studentContactInfos.get('mobileNumber') as FormControl;
+    return this.form.get('mobileNumber') as FormControl;
   }
 
   get vatNumber(): FormControl {
-    return this.studentContactInfos.get('vatNumber') as FormControl;
+    return this.form.get('vatNumber') as FormControl;
   }
 
 }
