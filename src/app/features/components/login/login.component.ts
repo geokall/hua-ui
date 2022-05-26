@@ -40,10 +40,11 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('');
         },
         error => {
-          console.log(error);
+          console.log(error.error);
+          // console.log(error.url);
           this.messageService.add({
             severity: 'error',
-            detail: 'Ο χρήστης δεν υπάρχει ή λάθος κωδικός'
+            detail: error.error.errorMessage
           });
         });
   }

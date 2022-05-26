@@ -80,12 +80,13 @@ export class StudentCreateComponent implements OnInit {
 
     this.api.createStudent(form).subscribe(result => {
       this.successModal = true;
+      this.saving = false;
     }, error => {
       this.saving = false;
       this.successModal = false;
       this.messageService.add({
         severity: 'error',
-        detail: 'Υπάρχει φοιτητής με ίδιο Α.Φ.Μ ή κινητό τηλέφωνο'
+        detail: error.error.errorMessage
       });
     })
   }
