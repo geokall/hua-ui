@@ -36,6 +36,7 @@ export class StudentSearchComponent implements OnInit {
         Validators.required
       ]),
       isVerified: new FormControl(Boolean),
+      dateCreated: new FormControl(null)
     })
     this.getStudents();
   }
@@ -46,8 +47,8 @@ export class StudentSearchComponent implements OnInit {
   }
 
   getStudents() {
-    this.api.getAllStudents().subscribe(student => {
-        this.students = student;
+    this.api.getAllStudents().subscribe(students => {
+        this.students = students;
         this.isLoading = false;
       },
       error => {
@@ -123,4 +124,7 @@ export class StudentSearchComponent implements OnInit {
     return this.studentForm.get('name');
   }
 
+  test() {
+    console.log('eee')
+  }
 }

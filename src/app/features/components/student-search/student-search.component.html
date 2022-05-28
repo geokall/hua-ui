@@ -1,29 +1,29 @@
 <div class="creditor">
   <p-toast></p-toast>
   <p-panel header="{{'Πίνακας φοιτητών'}}" [toggleable]="true">
-    <p-table #dt [loading]="isLoading" [showLoader]="false"
+    <p-table #dt1 [loading]="isLoading" [showLoader]="false"
              responsiveLayout="scroll"
              [value]="students" [rows]="10" [paginator]="true"
-             [globalFilterFields]="['surname', 'name', 'email', 'direction.name', 'isVerified']"
+             [globalFilterFields]="['surname', 'name', 'email', 'dateCreated', 'direction.name', 'isVerified']"
              [rowHover]="true" dataKey="id"
              currentPageReportTemplate="{{'Εμφάνιση'}} {first} {{'έως'}} {last} {{'από'}} {totalRecords} {{'φοιτητές'}}"
              [showCurrentPageReport]="true">
       <ng-template pTemplate="header">
         <tr>
           <th style="display: none;">id</th>
-          <th pSortableColumn="name">{{'Επώνυμο'}}
+          <th pSortableColumn="surname">{{'Επώνυμο'}}
             <p-sortIcon field="surname"></p-sortIcon>
           </th>
           <th pSortableColumn="name">{{'Όνομα'}}
             <p-sortIcon field="name"></p-sortIcon>
           </th>
-          <th pSortableColumn="name">{{'email'}}
+          <th pSortableColumn="email">{{'email'}}
             <p-sortIcon field="email"></p-sortIcon>
           </th>
-          <th pSortableColumn="name">{{'Ημ/νια εγγραφής'}}
+          <th pSortableColumn="dateCreated">{{'Ημ/νια Εγγραφής'}}
             <p-sortIcon field="dateCreated"></p-sortIcon>
           </th>
-          <th pSortableColumn="name">{{'Τμήμα'}}
+          <th pSortableColumn="direction">{{'Τμήμα'}}
             <p-sortIcon field="direction"></p-sortIcon>
           </th>
           <th pSortableColumn="isVerified">{{'Ενεργός'}}
@@ -31,15 +31,46 @@
           </th>
           <th></th>
         </tr>
+        <tr>
+          <th>
+            <input pInputText type="text" (input)="dt1.filter($any($event.target)?.value, 'surname', 'contains')"
+                   [value]="$any(dt1.filters['surname'])?.value" placeholder="Αναζήτηση με Επώνυμο"
+                   class="p-column-filter">
+          </th>
+          <th>
+            <input pInputText type="text" (input)="dt1.filter($any($event.target)?.value, 'name', 'contains')"
+                   [value]="$any(dt1.filters['name'])?.value" placeholder="Αναζήτηση με όνομα" class="p-column-filter">
+          </th>
+          <th>
+            <input pInputText type="text" (input)="dt1.filter($any($event.target)?.value, 'email', 'contains')"
+                   [value]="$any(dt1.filters['email'])?.value" placeholder="Αναζήτηση με email" class="p-column-filter">
+          </th>
+          <th>
+            <p-calendar [disabled]="true"
+                        (onInput)="dt1.filter($any($event.target)?.value, 'dateCreated', 'equals')"
+                        [ngModel]="$any(dt1.filters['dateCreated'])?.value"
+                        placeholder="Αναζήτηση με ημερομηνία">
+            </p-calendar>
+          </th>
+          <th>
+            <input pInputText type="text" (input)="dt1.filter($any($event.target)?.value, 'direction.name', 'contains')"
+                   [value]="$any(dt1.filters['direction.name'])?.value" placeholder="Αναζήτηση με τμήμα"
+                   class="p-column-filter">
+          </th>
+          <th>
+            <p-columnFilter type="boolean" field="isVerified">
+            </p-columnFilter>
+          </th>
+          <th></th>
       </ng-template>
       <ng-template pTemplate="body" let-student let-columns="columns">
         <tr>
           <td style="display: none;">{{student.id}}</td>
-          <td>{{student.surname}}</td>
-          <td>{{student.name}}</td>
-          <td>{{student.email}}</td>
+          <td>{{student.surname !== null ? student.surname : '-'}}</td>
+          <td>{{student.name !== null ? student.name : '-'}}</td>
+          <td>{{student.email !== null ? student.email : '-'}}</td>
           <td>{{student.dateCreated | date: 'dd/MM/yyyy'}}</td>
-          <td>{{student.direction.name}}</td>
+          <td>{{student.direction.name !== null ? student.direction.name : '-'}}</td>
           <td>
             <span *ngIf="student.isVerified"><i class="pi true-icon pi-check-circle"
                                                 style="font-size: 1.5rem"></i></span>
