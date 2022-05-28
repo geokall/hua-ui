@@ -36,6 +36,8 @@ import {FeaturesRoutingModule} from "./features-routing.module";
 import {LoginComponent} from "./components/login/login.component";
 import {StudentSearchComponent} from "./components/student-search/student-search.component";
 import {StudentCreateComponent} from "./components/student-create/student-create.component";
+import {PanelModule} from "primeng/panel";
+import {ToggleButtonModule} from "primeng/togglebutton";
 
 @NgModule({
   declarations: [
@@ -79,7 +81,9 @@ import {StudentCreateComponent} from "./components/student-create/student-create
     FeaturesRoutingModule,
     SharedModule,
     ScrollTopModule,
-    OverlayPanelModule
+    OverlayPanelModule,
+    PanelModule,
+    ToggleButtonModule
   ],
   providers: [
     // DecisionFormService,
