@@ -3,6 +3,7 @@ import {ApiService} from "../../../shared/api.service";
 import {AuthService} from "../../../shared/auth.service";
 import {MessageService} from "primeng/api";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {StudentDirection} from "../../../shared/models/student-direction";
 
 @Component({
   selector: 'app-student-search',
@@ -20,6 +21,7 @@ export class StudentSearchComponent implements OnInit {
   //@ts-ignore
   formErrors: Message[];
   isLoading = true;
+  direction: StudentDirection[];
 
   constructor(private api: ApiService,
               public authService: AuthService,
@@ -39,6 +41,11 @@ export class StudentSearchComponent implements OnInit {
       dateCreated: new FormControl(null)
     })
     this.getStudents();
+    this.direction = [
+      {name: 'Τεχνολογίες και Εφαρμογές Ιστού'},
+      {name: 'Διαχείριση Δικτύων Επικοινωνιών και Υπηρεσιών Επόμενης Γενιάς'},
+      {name: 'Πληροφοριακά Συστήματα στη Διοίκηση Επιχειρήσεων'},
+    ]
   }
 
   hideStudentDialog() {
