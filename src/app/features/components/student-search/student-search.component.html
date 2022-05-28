@@ -4,7 +4,7 @@
     <p-table #dt [loading]="isLoading" [showLoader]="false"
              responsiveLayout="scroll"
              [value]="students" [rows]="10" [paginator]="true"
-             [globalFilterFields]="['name','creditor.name']"
+             [globalFilterFields]="['surname', 'name', 'email', 'direction.name', 'isVerified']"
              [rowHover]="true" dataKey="id"
              currentPageReportTemplate="{{'Εμφάνιση'}} {first} {{'έως'}} {last} {{'από'}} {totalRecords} {{'φοιτητές'}}"
              [showCurrentPageReport]="true">
@@ -38,7 +38,7 @@
           <td>{{student.surname}}</td>
           <td>{{student.name}}</td>
           <td>{{student.email}}</td>
-          <td>{{student.dateCreated | date}}</td>
+          <td>{{student.dateCreated | date: 'dd/MM/yyyy'}}</td>
           <td>{{student.direction.name}}</td>
           <td>
             <span *ngIf="student.isVerified"><i class="pi true-icon pi-check-circle"
@@ -47,70 +47,74 @@
                                                  style="font-size: 1.5rem"></i></span>
           </td>
           <td>
-            <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-button-outlined mr-2"
-                    (click)="editCreditor(student)"></button>
-            <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-outlined"
-                    (click)="deleteCreditor(student)"></button>
+            <button pButton pRipple icon="pi pi-pencil"
+                    class="p-button-rounded p-button-warning p-button-outlined mr-2"
+                    (click)="editCreditor(student)">
+            </button>
+            <button pButton pRipple icon="pi pi-trash"
+                    class="p-button-rounded p-button-danger p-button-outlined"
+                    (click)="deleteCreditor(student)">
+            </button>
           </td>
         </tr>
       </ng-template>
-      <ng-template pTemplate="loadingbody" let-columns="columns">
-        <tr>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-          <td>
-            <p-skeleton></p-skeleton>
-          </td>
-        </tr>
-      </ng-template>
+      <!--      <ng-template pTemplate="loadingbody" let-columns="columns">-->
+      <!--        <tr>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--        </tr>-->
+      <!--        <tr>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--          <td>-->
+      <!--            <p-skeleton></p-skeleton>-->
+      <!--          </td>-->
+      <!--        </tr>-->
+      <!--      </ng-template>-->
     </p-table>
   </p-panel>
 
 </div>
 
-<p-dialog [(visible)]="newCreditorDialog" [style]="{width: '450px'}"
+<p-dialog [(visible)]="newStudentDialog" [style]="{width: '450px'}"
           [modal]="true" styleClass="p-fluid"
-          (onHide)="hideCreditorDialog()">
+          (onHide)="hideStudentDialog()">
   <ng-template pTemplate="header">
-    <span *ngIf="editable && !deleteCr">{{'Επεξεργασία φοιτητή'}}</span>
-    <span *ngIf="deleteCr">{{'CREDITORS.DELETE_CREDITOR'}}</span>
+    <span *ngIf="editable && !deleteStudent">{{'Επεξεργασία φοιτητή'}}</span>
+    <span *ngIf="deleteStudent">{{'CREDITORS.DELETE_CREDITOR'}}</span>
   </ng-template>
 
   <p-messages [(value)]="formErrors" [enableService]="false"></p-messages>
@@ -120,19 +124,19 @@
     <!--    <div *ngIf="name.invalid && (name.dirty || name.touched)">-->
     <!--      <small *ngIf="name.errors?.['required']" class="text-danger">{{"THIS_FIELD_IS_REQUIRED"}}.</small>-->
     <!--    </div>-->
-    <div *ngIf="editable && !deleteCr" class="mt-3 mb-3 form-group editableContainer">
+    <div *ngIf="editable && !deleteStudent" class="mt-3 mb-3 form-group editableContainer">
       <p-toggleButton onIcon="pi pi-check"
                       offIcon="pi pi-times" formControlName="isVerified">
       </p-toggleButton>
       <label>{{'Ενεργός'}}</label>
     </div>
-    <p *ngIf="deleteCr">{{{name: name.value} }}</p>
+    <p *ngIf="deleteStudent">{{{name: name.value} }}</p>
     <div class="p-dialog-footer">
       <button pButton pRipple label="{{'Ακύρωση'}}" icon="pi pi-times" class="p-button-text"
-              (click)="hideCreditorDialog()"></button>
-      <button *ngIf="editable && !deleteCr" pButton pRipple label="{{'Ενημέρωση'}}" icon="pi pi-pencil"
-              class="p-button-text" (click)="updateCreditor()"></button>
-      <button *ngIf="deleteCr" pButton pRipple label="{{'Διαγραφή'}}" icon="pi pi-trash"
+              (click)="hideStudentDialog()"></button>
+      <button *ngIf="editable && !deleteStudent" pButton pRipple label="{{'Ενημέρωση'}}" icon="pi pi-pencil"
+              class="p-button-text" (click)="updateStudent()"></button>
+      <button *ngIf="deleteStudent" pButton pRipple label="{{'Διαγραφή'}}" icon="pi pi-trash"
               class="p-button-text p-button-danger" (click)="removeCreditor()"></button>
     </div>
   </form>

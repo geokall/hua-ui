@@ -12,11 +12,11 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 export class StudentSearchComponent implements OnInit {
 
   studentForm: any;
-  newCreditorDialog: boolean | undefined;
+  newStudentDialog: boolean | undefined;
   students: any;
   student: any;
   editable: boolean | undefined;
-  deleteCr: boolean | undefined;
+  deleteStudent: boolean | undefined;
   //@ts-ignore
   formErrors: Message[];
   isLoading = true;
@@ -28,7 +28,7 @@ export class StudentSearchComponent implements OnInit {
 
   ngOnInit() {
     this.editable = false;
-    this.deleteCr = false;
+    this.deleteStudent = false;
     this.isLoading = true;
     this.studentForm = new FormGroup({
       id: new FormControl(null),
@@ -40,48 +40,9 @@ export class StudentSearchComponent implements OnInit {
     this.getStudents();
   }
 
-  openNewCreditor() {
-    this.editable = false;
-    this.deleteCr = false;
-    this.newCreditorDialog = true;
-  }
-
-  hideCreditorDialog() {
-    this.newCreditorDialog = false;
+  hideStudentDialog() {
+    this.newStudentDialog = false;
     this.studentForm.reset();
-  }
-
-  saveCreditor() {
-    this.editable = false;
-    this.deleteCr = false;
-    let creditor = this.studentForm.value;
-
-    // this.api.createCreditor(creditor).subscribe(result => {
-    //
-    //     console.log("success!", result);
-    //
-    //     this.getCreditors();
-    //
-    //     this.messageService.add({
-    //       severity: 'success',
-    //       detail: this.translate.instant('CREDITORS.CREDITOR_SUCCESS_ADD'),
-    //     });
-    //
-    //     this.creditorForm.reset();
-    //     this.newCreditorDialog = false;
-    //   },
-    //   error => {
-    //
-    //     console.log("error", error);
-    //     if(error.error != null){
-    //       this.formErrors = [
-    //         {severity:'error',detail: this.translate.instant(error.error.errorMessage)}
-    //       ];
-    //     }
-    //
-    //   })
-    this.studentForm.markAllAsTouched();
-
   }
 
   getStudents() {
@@ -100,18 +61,18 @@ export class StudentSearchComponent implements OnInit {
   }
 
   deleteCreditor(creditor: any) {
-    this.deleteCr = true;
+    this.deleteStudent = true;
     this.editable = false;
     this.studentForm.patchValue(creditor);
-    this.newCreditorDialog = true;
+    this.newStudentDialog = true;
   }
 
   editCreditor(creditor: any) {
     this.editable = true;
-    this.deleteCr = false;
+    this.deleteStudent = false;
     this.studentForm.patchValue(creditor);
     console.log(creditor);
-    this.newCreditorDialog = true;
+    this.newStudentDialog = true;
   }
 
   removeCreditor() {
@@ -136,11 +97,11 @@ export class StudentSearchComponent implements OnInit {
     //   })
   }
 
-  updateCreditor() {
+  updateStudent() {
     let creditor = this.studentForm.value;
     this.api.updateStudent(creditor).subscribe(studentDetails => {
         console.log("success!", studentDetails);
-        this.newCreditorDialog = false;
+        this.newStudentDialog = false;
         this.messageService.add({
           severity: 'success',
           detail: 'Επιτυχία',
