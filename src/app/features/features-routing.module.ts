@@ -25,7 +25,7 @@ const routes: Routes = [
       // {path: 'preview/:id', component: PreviewDocumentComponent},
     ]
   },
-  // {path: 'users-management', component: UserManagementComponent, canActivate: [AuthGuard, AdminGuard]},
+  {path: 'student-profile', component: StudentCreateComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: ''}

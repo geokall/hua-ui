@@ -9,15 +9,15 @@
         <div class="formgroup-inline">
           <div class="field">
             <span class="p-float-label">
-              <input id="surname" type="text" pInputText formControlName="surname" placeholder="Επώνυμο">
-              <label for="surname" class="required"></label>
+              <input id="surname" type="text" pInputText formControlName="surname">
+              <label for="surname" class="required">Επώνυμο</label>
             </span>
           </div>
 
           <div class="field">
             <span class="p-float-label">
-              <input id="name" type="text" pInputText formControlName="name" placeholder="Όνομα">
-              <label for="name" class="required"></label>
+              <input id="name" type="text" pInputText formControlName="name">
+              <label for="name" class="required">Όνομα</label>
             </span>
           </div>
         </div>
@@ -25,38 +25,44 @@
         <div class="formgroup-inline">
           <div class="field">
             <span class="p-float-label">
-              <input id="fatherName" type="text" pInputText formControlName="fatherName" placeholder="Πατρώνυμο">
-              <label for="fatherName" class="required"></label>
+              <input id="fatherName" type="text" pInputText formControlName="fatherName">
+              <label for="fatherName" class="required">Πατρώνυμο</label>
             </span>
           </div>
 
           <div class="field">
             <span class="p-float-label">
-              <input id="motherName" type="text" pInputText formControlName="motherName" placeholder="Μητρώνυμο">
-              <label for="motherName" class="required"></label>
+              <input id="motherName" type="text" pInputText formControlName="motherName">
+              <label for="motherName" class="required">Μητρώνυμο</label>
             </span>
           </div>
         </div>
 
         <div class="formgroup-inline">
           <div class="field">
-            <p-calendar formControlName="birthDate"
-                        placeholder="Ημερομηνία Γέννησης"
-                        dateFormat="dd/mm/yy"
-                        [showIcon]="true"
-                        dataType="string"
-                        class="required"
-                        inputId="birthDate">
-            </p-calendar>
+            <span class="p-float-label">
+              <p-calendar formControlName="birthDate"
+                          id="birthDate"
+                          dateFormat="dd/mm/yy"
+                          [showIcon]="true"
+                          dataType="string"
+                          class="required"
+                          inputId="birthDate">
+              </p-calendar>
+              <label for="birthDate" class="required">Ημερομηνία Γέννησης</label>
+            </span>
           </div>
 
           <div class="field">
-            <p-dropdown [options]="studentGenders"
-                        [formControl]="gender"
-                        placeholder="Φύλο"
-                        optionValue="key"
-                        optionLabel="value">
-            </p-dropdown>
+            <span class="p-float-label">
+              <p-dropdown [options]="studentGenders"
+                          [formControl]="gender"
+                          id="gender"
+                          optionValue="key"
+                          optionLabel="value">
+              </p-dropdown>
+              <label for="gender" class="required">Φύλο</label>
+            </span>
           </div>
 
         </div>
@@ -69,20 +75,27 @@
         <div class="formgrid grid">
 
           <div class="field col-5">
-            <input id="disabled-input"
-                   class="w-full"
-                   type="text"
-                   [readOnly]="true"
-                   pInputText [disabled]="isDisabled"
-                   [formControl]="department"/>
+            <span class="p-float-label">
+              <input class="w-full"
+                     type="text"
+                     id="department"
+                     [readOnly]="true"
+                     pInputText [disabled]="isDisabled"
+                     [formControl]="department"/>
+              <label for="department" class="required">Τμήμα</label>
+            </span>
           </div>
 
           <div class="field col-7">
-            <p-dropdown [options]="studentDirections"
-                        [formControl]="direction"
-                        placeholder="Επιλογή κατεύθυνσης"
-                        optionLabel="name">
-            </p-dropdown>
+            <span class="p-float-label">
+              <p-dropdown [options]="studentDirections"
+                          id="direction"
+                          [formControl]="direction"
+                          optionLabel="name">
+              </p-dropdown>
+            <label for="direction" class="required">Επιλογή κατεύθυνσης</label>
+            </span>
+
           </div>
         </div>
 
@@ -119,23 +132,29 @@
         <div class="formgroup-inline">
 
           <div class="field">
-            <p-inputNumber [formControl]="mobileNumber"
-                           placeholder="Τηλέφωνο επικοινωνίας"
-                           mode="decimal"
-                           [maxlength]="10"
-                           [useGrouping]="false"
-                           inputId="mobileNumber">
-            </p-inputNumber>
+            <span class="p-float-label">
+              <p-inputNumber [formControl]="mobileNumber"
+                             id="mobileNumber"
+                             mode="decimal"
+                             [maxlength]="10"
+                             [useGrouping]="false"
+                             inputId="mobileNumber">
+              </p-inputNumber>
+            <label for="mobileNumber">Τηλέφωνο επικοινωνίας</label>
+            </span>
           </div>
 
           <div class="field">
-            <p-inputNumber [formControl]="vatNumber"
-                           placeholder="Α.Φ.Μ"
-                           mode="decimal"
-                           [maxlength]="10"
-                           [useGrouping]="false"
-                           inputId="vatNumber">
-            </p-inputNumber>
+            <span class="p-float-label">
+              <p-inputNumber [formControl]="vatNumber"
+                             id="Αfm"
+                             mode="decimal"
+                             [maxlength]="10"
+                             [useGrouping]="false"
+                             inputId="vatNumber">
+              </p-inputNumber>
+            <label for="Αfm">Α.Φ.Μ</label>
+            </span>
           </div>
 
         </div>

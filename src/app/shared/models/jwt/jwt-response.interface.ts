@@ -1,4 +1,5 @@
 export interface JwtResponse {
+  id: any;
   token: string;
   username: string;
   surname: string;

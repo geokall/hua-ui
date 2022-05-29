@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit {
       routerLink: ['/'],
       routerLinkActiveOptions: {exact: true},
       visible: this.auth.isLoggedIn()
-      // visible:  true
     },
       {
         label: 'Φοιτητής',
@@ -46,7 +45,12 @@ export class HeaderComponent implements OnInit {
         routerLink: 'actions/search',
         visible: this.auth.isLoggedIn() && this.auth.isAdmin()
       },
-      // { label: 'Διαχείριση Χρηστών', icon: 'pi pi-users', routerLink: '/users-management',visible: (this.auth.isLoggedIn() && this.auth.isAdmin()) },
+      {
+        label: 'Προφίλ φοιτητή',
+        icon: 'pi pi-users',
+        routerLink: '/student-profile',
+        visible: this.auth.isLoggedIn() && !this.auth.isAdmin()
+      },
     ];
   }
 

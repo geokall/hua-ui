@@ -7,6 +7,7 @@ import {StudentService} from "../../services/student.service";
 import {Router} from "@angular/router";
 import {StudentDTO} from "../../../shared/models/student-dto";
 import {MessageService} from "primeng/api";
+import {AuthService} from "../../../shared/auth.service";
 
 @Component({
   selector: 'app-student-create',
@@ -34,12 +35,14 @@ export class StudentCreateComponent implements OnInit {
 
   constructor(private api: StudentService,
               private messageService: MessageService,
+              public auth: AuthService,
               private router: Router) {
   }
 
   ngOnInit(): void {
     this.initForm();
     this.initStudentDirections();
+    this.fetchStudent();
   }
 
   initForm(): void {
@@ -89,6 +92,12 @@ export class StudentCreateComponent implements OnInit {
         detail: error.error.errorMessage
       });
     })
+  }
+
+  private fetchStudent(): void {
+    this.api.getStudent(this.auth.getId())
+      .subscribe(decision => this.form.reset(decision))
+      .add(() => this.loading = false);
   }
 
   get gender(): FormControl {

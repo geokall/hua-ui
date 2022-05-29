@@ -75,6 +75,16 @@ export class AuthService {
     return username;
   }
 
+  getId(): number {
+    let id: number = 0;
+
+    if (this.isLoggedIn() && this.loggedInUser) {
+      id = this.loggedInUser.id ? `${this.loggedInUser.id}` : this.loggedInUser.id;
+    }
+
+    return id;
+  }
+
   isAdmin(): boolean {
     let roleName = '';
     if (this.isLoggedIn() && this.loggedInUser) {
