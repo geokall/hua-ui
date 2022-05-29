@@ -38,12 +38,14 @@ import {StudentSearchComponent} from "./components/student-search/student-search
 import {StudentCreateComponent} from "./components/student-create/student-create.component";
 import {PanelModule} from "primeng/panel";
 import {ToggleButtonModule} from "primeng/togglebutton";
+import {HomeComponent} from "../home/home.component";
 
 @NgModule({
   declarations: [
     LoginComponent,
     StudentSearchComponent,
-    StudentCreateComponent
+    StudentCreateComponent,
+    HomeComponent
   ],
   imports: [
     CommonModule,

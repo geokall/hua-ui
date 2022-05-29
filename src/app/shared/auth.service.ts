@@ -75,28 +75,18 @@ export class AuthService {
     return username;
   }
 
-  // isAdmin(): boolean {
-  //   let roleName = '';
-  //   if (this.isLoggedIn() && this.loggedInUser) {
-  //     roleName = this.loggedInUser.roles[0];
-  //
-  //     if(roleName == 'Γενικός Διαχειριστής'){
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // }
+  isAdmin(): boolean {
+    let roleName = '';
+    if (this.isLoggedIn() && this.loggedInUser) {
+      roleName = this.loggedInUser.roles[0];
+      console.log(roleName)
 
-  // isReader(): boolean {
-  //   let roleName = '';
-  //   if (this.isLoggedIn() && this.loggedInUser) {
-  //     roleName = this.loggedInUser.roles[0];
-  //     if(roleName == 'Αναγνώστης'){
-  //       return true;
-  //     }
-  //   }
-  //   return false;
-  // }
+      if (roleName == 'ADMIN') {
+        return true;
+      }
+    }
+    return false;
+  }
 
   logout(): void {
     this.loggedInUser = null;

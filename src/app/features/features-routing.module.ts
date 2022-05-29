@@ -4,6 +4,7 @@ import {StudentSearchComponent} from "./components/student-search/student-search
 import {AuthGuard} from "../shared/guards/auth.guard";
 import {StudentCreateComponent} from "./components/student-create/student-create.component";
 import {LoginComponent} from "./components/login/login.component";
+import {HomeComponent} from "../home/home.component";
 
 const routes: Routes = [
   {
@@ -26,7 +27,7 @@ const routes: Routes = [
   },
   // {path: 'users-management', component: UserManagementComponent, canActivate: [AuthGuard, AdminGuard]},
   {path: 'login', component: LoginComponent},
-  {path: '', component: StudentSearchComponent, canActivate: [AuthGuard]},
+  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: ''}
 ];
 

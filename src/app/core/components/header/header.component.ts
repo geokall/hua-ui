@@ -35,13 +35,17 @@ export class HeaderComponent implements OnInit {
         label: 'Φοιτητής',
         icon: 'pi pi-file-o',
         routerLinkActiveOptions: {exact: false},
-        // visible: (this.auth.isLoggedIn() && !this.auth.isReader() && !this.auth.isExternalReader()),
-        visible: true,
+        visible: this.auth.isLoggedIn() && this.auth.isAdmin(),
         items: [
           {label: 'Εγγραφή νέου φοιτητή', icon: 'pi pi-plus-circle', routerLink: 'actions/create'},
         ]
       },
-      {label: 'Αναζήτηση', icon: 'pi pi-search', routerLink: 'actions/search', visible: this.auth.isLoggedIn()},
+      {
+        label: 'Αναζήτηση',
+        icon: 'pi pi-search',
+        routerLink: 'actions/search',
+        visible: this.auth.isLoggedIn() && this.auth.isAdmin()
+      },
       // { label: 'Διαχείριση Χρηστών', icon: 'pi pi-users', routerLink: '/users-management',visible: (this.auth.isLoggedIn() && this.auth.isAdmin()) },
     ];
   }

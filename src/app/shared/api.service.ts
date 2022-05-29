@@ -22,6 +22,10 @@ export class ApiService {
     return this.http.get<StudentDTO[]>(`${environment.serverUrl}/student/all`);
   }
 
+  getStudent(id: number): Observable<StudentDTO> {
+    return this.http.get<StudentDTO>(`${environment.serverUrl}/student/find/${id}`);
+  }
+
   updateStudent(student: StudentDTO): Observable<StudentDTO> {
     return this.http.put<StudentDTO>(`${environment.serverUrl}/student/update/${student.id}`, student);
   }
