@@ -59,12 +59,10 @@ export class StudentSearchComponent implements OnInit {
         this.isLoading = false;
       },
       error => {
-
-        console.log("error", error);
-        this.messageService.add({
-          severity: 'error',
-          detail: 'den efere',
-        });
+       this.messageService.add({
+         severity: 'error',
+         detail: 'den efere',
+       });
       });
   }
 
@@ -79,7 +77,6 @@ export class StudentSearchComponent implements OnInit {
     this.editable = true;
     this.deleteStudent = false;
     this.studentForm.patchValue(creditor);
-    console.log(creditor);
     this.newStudentDialog = true;
   }
 
@@ -112,7 +109,7 @@ export class StudentSearchComponent implements OnInit {
         this.newStudentDialog = false;
         this.messageService.add({
           severity: 'success',
-          detail: 'Επιτυχία',
+          detail: 'Ο Χρήστης ενημερώθηκε',
         });
         this.getStudents();
         this.studentForm.reset();
@@ -121,7 +118,7 @@ export class StudentSearchComponent implements OnInit {
         console.log("error", error);
         if (error.error != null) {
           this.formErrors = [
-            {severity: 'error', detail: 'failed baby'}
+            {severity: 'error', detail: 'Υπήρξε σφάλμα'}
           ];
         }
       })
@@ -129,9 +126,5 @@ export class StudentSearchComponent implements OnInit {
 
   get name() {
     return this.studentForm.get('name');
-  }
-
-  test() {
-    console.log('eee')
   }
 }

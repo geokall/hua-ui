@@ -39,13 +39,16 @@ import {StudentCreateComponent} from "./components/student-create/student-create
 import {PanelModule} from "primeng/panel";
 import {ToggleButtonModule} from "primeng/togglebutton";
 import {HomeComponent} from "../home/home.component";
+import {PasswordComponent} from "../password/password.component";
+import {PasswordModule} from "primeng/password";
 
 @NgModule({
   declarations: [
     LoginComponent,
     StudentSearchComponent,
     StudentCreateComponent,
-    HomeComponent
+    HomeComponent,
+    PasswordComponent
   ],
   imports: [
     CommonModule,
@@ -85,7 +88,8 @@ import {HomeComponent} from "../home/home.component";
     ScrollTopModule,
     OverlayPanelModule,
     PanelModule,
-    ToggleButtonModule
+    ToggleButtonModule,
+    PasswordModule
   ],
   providers: [
     // DecisionFormService,

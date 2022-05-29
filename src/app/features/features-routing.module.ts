@@ -6,6 +6,7 @@ import {StudentCreateComponent} from "./components/student-create/student-create
 import {LoginComponent} from "./components/login/login.component";
 import {HomeComponent} from "../home/home.component";
 import {GeneralGuard} from "../shared/guards/general.guard";
+import {PasswordComponent} from "../password/password.component";
 
 const routes: Routes = [
   {
@@ -25,6 +26,7 @@ const routes: Routes = [
     ]
   },
   {path: 'student-profile', component: StudentCreateComponent, canActivate: [AuthGuard]},
+  {path: 'student-password', component: PasswordComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: '**', redirectTo: ''}
