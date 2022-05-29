@@ -54,15 +54,13 @@
           </div>
 
           <div class="field">
-            <span class="p-float-label">
               <p-dropdown [options]="studentGenders"
                           [formControl]="gender"
+                          placeholder="Επιλογή φύλου"
                           id="gender"
                           optionValue="key"
                           optionLabel="value">
               </p-dropdown>
-              <label for="gender" class="required">Φύλο</label>
-            </span>
           </div>
 
         </div>
@@ -87,15 +85,12 @@
           </div>
 
           <div class="field col-7">
-            <span class="p-float-label">
               <p-dropdown [options]="studentDirections"
                           id="direction"
+                          placeholder="Επιλογή Κατεύθυνσης"
                           [formControl]="direction"
                           optionLabel="name">
               </p-dropdown>
-            <label for="direction" class="required">Επιλογή κατεύθυνσης</label>
-            </span>
-
           </div>
         </div>
 

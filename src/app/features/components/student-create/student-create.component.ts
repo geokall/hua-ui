@@ -95,9 +95,11 @@ export class StudentCreateComponent implements OnInit {
   }
 
   private fetchStudent(): void {
-    this.api.getStudent(this.auth.getId())
-      .subscribe(decision => this.form.reset(decision))
-      .add(() => this.loading = false);
+    if (this.router.url === '/student-profile') {
+      this.api.getStudent(this.auth.getId())
+        .subscribe(decision => this.form.reset(decision))
+        .add(() => this.loading = false);
+    }
   }
 
   get gender(): FormControl {
