@@ -106,7 +106,6 @@ export class StudentCreateComponent implements OnInit {
     } else {
       this.isEditMode = false;
     }
-    console.log(this.isEditMode)
   }
 
   get gender(): FormControl {

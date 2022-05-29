@@ -49,9 +49,14 @@ export class HeaderComponent implements OnInit {
         label: 'Προφίλ',
         icon: 'pi pi-users',
         routerLink: '/student-profile',
-        // visible: this.auth.isLoggedIn() && !this.auth.isAdmin()
         visible: this.auth.isLoggedIn()
       },
+      {
+        label: 'Αλλαγή κωδικού',
+        icon: 'pi pi-key',
+        routerLink: '/student-password',
+        visible: this.auth.isLoggedIn()
+      }
     ];
   }
 
