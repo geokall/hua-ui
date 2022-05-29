@@ -129,10 +129,13 @@
           </div>
 
           <div class="field">
-              <span class="p-float-label">
-                <input id="vatNumber" type="text" pInputText [formControl]="vatNumber">
-                <label for="vatNumber">Α.Φ.Μ</label>
-              </span>
+            <p-inputNumber [formControl]="vatNumber"
+                           placeholder="Α.Φ.Μ"
+                           mode="decimal"
+                           [maxlength]="10"
+                           [useGrouping]="false"
+                           inputId="vatNumber">
+            </p-inputNumber>
           </div>
 
         </div>
