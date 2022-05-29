@@ -16,6 +16,7 @@ import {AuthService} from "../../../shared/auth.service";
 })
 export class StudentCreateComponent implements OnInit {
 
+  studentForm?: StudentDTO;
   form: FormGroup;
 
   saving: boolean = false;
@@ -23,6 +24,7 @@ export class StudentCreateComponent implements OnInit {
   successModal: boolean = false;
   errorModal: boolean = false;
   isDisabled: boolean = true;
+  isEditMode: boolean = false;
 
   studentDirections: StudentDirection[];
 
@@ -55,7 +57,7 @@ export class StudentCreateComponent implements OnInit {
       birthDate: new FormControl(null),
       gender: new FormControl(null),
       department: new FormControl('ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)'),
-      direction: new FormControl(null, Validators.required),
+      direction: new FormControl(null),
       address: new FormControl(null),
       city: new FormControl(null),
       postalCode: new FormControl(null),
@@ -73,7 +75,8 @@ export class StudentCreateComponent implements OnInit {
   }
 
   onClear(): void {
-    // this.form.reset(this.form); //not sure
+    this.form.reset(this.studentForm);
+    this.department.setValue('ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)')
   }
 
   onSubmit(): void {
@@ -96,10 +99,15 @@ export class StudentCreateComponent implements OnInit {
 
   private fetchStudent(): void {
     if (this.router.url === '/student-profile') {
+      this.isEditMode = true;
       this.api.getStudent(this.auth.getId())
         .subscribe(decision => this.form.reset(decision))
         .add(() => this.loading = false);
+    } else {
+      this.isEditMode = false;
     }
+    console.log(this.isEditMode)
+    console.log('ee')
   }
 
   get gender(): FormControl {

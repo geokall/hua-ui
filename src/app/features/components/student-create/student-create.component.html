@@ -140,11 +140,12 @@
       </div>
 
       <ng-template pTemplate="footer">
-        <p-button (onClick)="onSubmit()" [disabled]="form.invalid || form.untouched"
+        <p-button *ngIf="isEditMode == false" (onClick)="onSubmit()" [disabled]="form.invalid || form.untouched"
                   [icon]="!saving ? 'pi pi-check' : 'pi pi-spin pi-spinner'"
                   label="Αποθήκευση">
         </p-button>
-        <p-button (onClick)="onClear()" [disabled]="form.untouched" [style]="{'margin-left': '.5em'}"
+        <p-button *ngIf="isEditMode == false" (onClick)="onClear()" [disabled]="form.untouched"
+                  [style]="{'margin-left': '.5em'}"
                   [icon]="!form?.get('id')?.value ?  'pi pi-trash' : 'pi pi-refresh'"
                   [label]="!form?.get('id')?.value ? 'Καθαρισμός': 'Επαναφορά'"
                   styleClass="p-button-secondary">
