@@ -5,6 +5,7 @@ import {AuthGuard} from "../shared/guards/auth.guard";
 import {StudentCreateComponent} from "./components/student-create/student-create.component";
 import {LoginComponent} from "./components/login/login.component";
 import {HomeComponent} from "../home/home.component";
+import {GeneralGuard} from "../shared/guards/general.guard";
 
 const routes: Routes = [
   {
@@ -14,15 +15,13 @@ const routes: Routes = [
       {
         path: 'create',
         component: StudentCreateComponent,
-        canActivate: [AuthGuard]
-        // canActivate: [AuthGuard, GeneralGuard]
+        canActivate: [AuthGuard, GeneralGuard]
       },
-      // {path: 'edit/:id', component: DecisionFormComponent, canActivate: [AuthGuard, GeneralGuard]},
       {
         path: 'search',
-        component: StudentSearchComponent
+        component: StudentSearchComponent,
+        canActivate: [AuthGuard, GeneralGuard]
       },
-      // {path: 'preview/:id', component: PreviewDocumentComponent},
     ]
   },
   {path: 'student-profile', component: StudentCreateComponent, canActivate: [AuthGuard]},

@@ -46,10 +46,11 @@ export class HeaderComponent implements OnInit {
         visible: this.auth.isLoggedIn() && this.auth.isAdmin()
       },
       {
-        label: 'Προφίλ φοιτητή',
+        label: 'Προφίλ',
         icon: 'pi pi-users',
         routerLink: '/student-profile',
-        visible: this.auth.isLoggedIn() && !this.auth.isAdmin()
+        // visible: this.auth.isLoggedIn() && !this.auth.isAdmin()
+        visible: this.auth.isLoggedIn()
       },
     ];
   }
