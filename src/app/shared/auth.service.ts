@@ -89,7 +89,6 @@ export class AuthService {
     let roleName = '';
     if (this.isLoggedIn() && this.loggedInUser) {
       roleName = this.loggedInUser.roles[0];
-      console.log(roleName)
 
       if (roleName == 'ADMIN') {
         return true;

@@ -25,6 +25,7 @@ export class StudentCreateComponent implements OnInit {
   errorModal: boolean = false;
   isDisabled: boolean = true;
   isEditMode: boolean = false;
+  isGraduateInfoEnabled: boolean = false;
 
   studentDirections: StudentDirection[];
 
@@ -45,6 +46,7 @@ export class StudentCreateComponent implements OnInit {
     this.initForm();
     this.initStudentDirections();
     this.fetchStudent();
+    this.graduateInfoEnabled();
   }
 
   initForm(): void {
@@ -106,6 +108,11 @@ export class StudentCreateComponent implements OnInit {
     } else {
       this.isEditMode = false;
     }
+  }
+
+  private graduateInfoEnabled(): void {
+    this.isGraduateInfoEnabled = (this.router.url === '/actions/create' && this.auth.isAdmin())
+      || (this.router.url === '/student-profile' && !this.auth.isAdmin());
   }
 
   get gender(): FormControl {
