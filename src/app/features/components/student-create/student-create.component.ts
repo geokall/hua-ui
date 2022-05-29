@@ -58,7 +58,7 @@ export class StudentCreateComponent implements OnInit {
       motherName: new FormControl(null),
       birthDate: new FormControl(null),
       gender: new FormControl(null),
-      department: new FormControl('ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΜΠΣ)'),
+      department: new FormControl('ΤΜΗΜΑ ΠΛΗΡΟΦΟΡΙΚΗΣ ΚΑΙ ΤΗΛΕΜΑΤΙΚΗΣ (ΠΜΣ)'),
       direction: new FormControl(null),
       address: new FormControl(null),
       city: new FormControl(null),
