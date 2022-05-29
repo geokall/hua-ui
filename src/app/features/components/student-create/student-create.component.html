@@ -9,12 +9,12 @@
         <div class="formgroup-inline">
           <div class="field">
             <label for="surname" class="block">Επώνυμο</label>
-            <input id="surname" type="text" pInputText formControlName="surname">
+            <input [readOnly]="isEditMode" id="surname" type="text" pInputText formControlName="surname">
           </div>
 
           <div class="field">
             <label for="name" class="block">Όνομα</label>
-            <input id="name" type="text" pInputText formControlName="name">
+            <input [readOnly]="isEditMode" id="name" type="text" pInputText formControlName="name">
           </div>
 
         </div>
@@ -22,12 +22,12 @@
         <div class="formgroup-inline">
           <div class="field">
             <label for="fatherName" class="block">Πατρώνυμο</label>
-            <input id="fatherName" type="text" pInputText formControlName="fatherName">
+            <input [readOnly]="isEditMode" id="fatherName" type="text" pInputText formControlName="fatherName">
           </div>
 
           <div class="field">
             <label for="motherName" class="block">Μητρώνυμο</label>
-            <input id="motherName" type="text" pInputText formControlName="motherName">
+            <input [readOnly]="isEditMode" id="motherName" type="text" pInputText formControlName="motherName">
           </div>
 
         </div>
@@ -36,19 +36,19 @@
 
           <div class="field">
             <label for="birthDate" class="block">Ημερομηνία Γέννησης</label>
-            <p-calendar formControlName="birthDate"
+            <p-calendar [ngStyle]="isEditMode ? {'pointer-events': 'none'} : {'pointer-events': 'true'}"
+                        formControlName="birthDate"
                         id="birthDate"
                         dateFormat="dd/mm/yy"
                         [showIcon]="true"
                         dataType="string"
-                        class="required"
                         inputId="birthDate">
             </p-calendar>
           </div>
 
           <div class="field">
             <label for="gender" class="block">Επιλογή φύλου</label>
-            <p-dropdown [options]="studentGenders"
+            <p-dropdown [readonly]="isEditMode" [options]="studentGenders"
                         [formControl]="gender"
                         placeholder="Φύλο"
                         id="gender"
@@ -71,14 +71,13 @@
             <input class="w-full"
                    type="text"
                    id="department"
-                   [readOnly]="true"
-                   pInputText [disabled]="isDisabled"
-                   [formControl]="department"/>
+                   [readOnly]="isEditMode"
+                   pInputText [formControl]="department"/>
           </div>
 
           <div class="field col-7">
             <label for="direction" class="block">Επιλογή Κατεύθυνσης</label>
-            <p-dropdown [options]="studentDirections"
+            <p-dropdown [readonly]="isEditMode" [options]="studentDirections"
                         id="direction"
                         placeholder="Κατεύθυνση"
                         [formControl]="direction"
@@ -96,17 +95,17 @@
 
           <div class="field">
             <label for="address" class="block">Διεύθυνση</label>
-            <input id="address" type="text" pInputText [formControl]="address">
+            <input [readOnly]="isEditMode" id="address" type="text" pInputText [formControl]="address">
           </div>
 
           <div class="field">
             <label for="city" class="block">Πόλη</label>
-            <input id="city" type="text" pInputText [formControl]="city">
+            <input [readOnly]="isEditMode" id="city" type="text" pInputText [formControl]="city">
           </div>
 
           <div class="field">
             <label for="postalCode" class="block">Ταχυδρομικός κώδικας</label>
-            <input id="postalCode" type="text" pInputText [formControl]="postalCode">
+            <input [readOnly]="isEditMode" id="postalCode" type="text" pInputText [formControl]="postalCode">
           </div>
 
         </div>
@@ -115,24 +114,26 @@
 
           <div class="field">
             <label for="postalCode" class="block">Τηλέφωνο επικοινωνίας</label>
-              <p-inputNumber [formControl]="mobileNumber"
-                             id="mobileNumber"
-                             mode="decimal"
-                             [maxlength]="10"
-                             [useGrouping]="false"
-                             inputId="mobileNumber">
-              </p-inputNumber>
+            <p-inputNumber [readonly]="isEditMode"
+                           [formControl]="mobileNumber"
+                           id="mobileNumber"
+                           mode="decimal"
+                           [maxlength]="10"
+                           [useGrouping]="false"
+                           inputId="mobileNumber">
+            </p-inputNumber>
           </div>
 
           <div class="field">
             <label for="postalCode" class="block">Α.Φ.Μ</label>
-              <p-inputNumber [formControl]="vatNumber"
-                             id="Αfm"
-                             mode="decimal"
-                             [maxlength]="10"
-                             [useGrouping]="false"
-                             inputId="vatNumber">
-              </p-inputNumber>
+            <p-inputNumber [readonly]="isEditMode"
+                           [formControl]="vatNumber"
+                           id="Αfm"
+                           mode="decimal"
+                           [maxlength]="10"
+                           [useGrouping]="false"
+                           inputId="vatNumber">
+            </p-inputNumber>
           </div>
 
         </div>
