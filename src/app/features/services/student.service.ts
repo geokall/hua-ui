@@ -25,4 +25,12 @@ export class StudentService {
   updatePassword(password: PasswordDTO): Observable<PasswordDTO> {
     return this.http.put<PasswordDTO>(`${environment.serverUrl}/student/update-password/${password.id}`, password);
   }
+
+  getAllStudents(): Observable<StudentDTO[]> {
+    return this.http.get<StudentDTO[]>(`${environment.serverUrl}/student/all`);
+  }
+
+  updateStudent(student: StudentDTO): Observable<StudentDTO> {
+    return this.http.put<StudentDTO>(`${environment.serverUrl}/student/update/${student.id}`, student);
+  }
 }

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from "../../../shared/api.service";
 import {AuthService} from "../../../shared/auth.service";
 import {MessageService} from "primeng/api";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {StudentDirection} from "../../../shared/models/student-direction";
+import {StudentService} from "../../services/student.service";
 
 @Component({
   selector: 'app-student-search',
@@ -23,7 +23,7 @@ export class StudentSearchComponent implements OnInit {
   isLoading = true;
   direction: StudentDirection[];
 
-  constructor(private api: ApiService,
+  constructor(private api: StudentService,
               public authService: AuthService,
               private messageService: MessageService) {
   }
@@ -66,42 +66,6 @@ export class StudentSearchComponent implements OnInit {
       });
   }
 
-  deleteCreditor(creditor: any) {
-    this.deleteStudent = true;
-    this.editable = false;
-    this.studentForm.patchValue(creditor);
-    this.newStudentDialog = true;
-  }
-
-  editCreditor(creditor: any) {
-    this.editable = true;
-    this.deleteStudent = false;
-    this.studentForm.patchValue(creditor);
-    this.newStudentDialog = true;
-  }
-
-  removeCreditor() {
-    let creditor = this.studentForm.value;
-    // this.api.deleteCreditor(creditor).subscribe(creditorsDetails => {
-    //
-    //     console.log("success!", creditorsDetails);
-    //     this.newCreditorDialog = false;
-    //     this.getCreditors();
-    //     this.messageService.add({
-    //       severity: 'success',
-    //       detail: this.translate.instant('CREDITORS.CREDITOR_SUCCESS_DELETE'),
-    //     });
-    //   },
-    //   error => {
-    //     console.log("error", error);
-    //     if (error.error != null) {
-    //       this.formErrors = [
-    //         {severity: 'error', detail: this.translate.instant(error.error.errorMessage)}
-    //       ];
-    //     }
-    //   })
-  }
-
   updateStudent() {
     let creditor = this.studentForm.value;
     this.api.updateStudent(creditor).subscribe(studentDetails => {
@@ -123,6 +87,26 @@ export class StudentSearchComponent implements OnInit {
         }
       })
   }
+
+  editStudent(student: any) {
+    this.editable = true;
+    this.deleteStudent = false;
+    this.studentForm.patchValue(student);
+    this.newStudentDialog = true;
+  }
+
+  // deleteStudentForm(student: any) {
+  //   this.deleteStudent = true;
+  //   this.editable = false;
+  //   this.studentForm.patchValue(student);
+  //   this.newStudentDialog = true;
+  // }
+  //
+
+  //
+  // removeStudent() {
+  //   let creditor = this.studentForm.value;
+  // }
 
   get name() {
     return this.studentForm.get('name');
