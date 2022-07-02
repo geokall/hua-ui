@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  allowedDomains: ['localhost:4200', 'localhost:8080', 'localhost'],
-  disallowedDomains: ['http://localhost:4200/auth/login', 'http://localhost:8080/auth/login'],
-  serverUrl: 'https://geokall.ddns.net/api',
+  allowedDomains: ['huademo.gotdns.ch/api'],
+  disallowedDomains: ['https://huademo.gotdns.ch/api/auth/login'],
+  serverUrl: 'https://huademo.gotdns.ch/api',
   debug: false
 };
