@@ -48,4 +48,13 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            slackSend(message: "UI build deployed successfully - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+        }
+        failure {
+            slackSend(failOnError: true, message: "UI build failed  - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+        }
+    }
 }
