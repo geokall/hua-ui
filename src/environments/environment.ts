@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'http://localhost:8080',
+  serverUrl: 'http://localhost:8080/api',
   allowedDomains: ['localhost:4200', 'localhost:8080', 'localhost'],
-  disallowedDomains: ['http://localhost:4200/auth/login', 'http://localhost:8080/auth/login'],
+  disallowedDomains: ['http://localhost:4200/api/auth/login', 'http://localhost:8080/api/auth/login'],
   debug: true
 };
 
