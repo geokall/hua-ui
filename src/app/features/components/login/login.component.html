@@ -10,7 +10,7 @@
           margin-bottom: 1em;
           color: #1c7ad9;">
       </i>
-      <form [formGroup]="loginForm">
+      <form [formGroup]="loginForm" (keyup.enter)="submit()">
         <div class="field">
           <label for="username">Όνομα Χρήστη</label>
           <input id="username" formControlName="username" placeholder="Όνομα Χρήστη" type="text"

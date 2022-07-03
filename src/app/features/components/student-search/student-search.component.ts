@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../shared/auth.service";
 import {MessageService} from "primeng/api";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormControl, FormGroup} from "@angular/forms";
 import {StudentDirection} from "../../../shared/models/student-direction";
 import {StudentService} from "../../services/student.service";
 
@@ -34,11 +34,17 @@ export class StudentSearchComponent implements OnInit {
     this.isLoading = true;
     this.studentForm = new FormGroup({
       id: new FormControl(null),
-      name: new FormControl('', [
-        Validators.required
-      ]),
       isVerified: new FormControl(Boolean),
-      dateCreated: new FormControl(null)
+      dateCreated: new FormControl(null),
+      surname: new FormControl(null),
+      name: new FormControl(null),
+      fatherName: new FormControl(null),
+      motherName: new FormControl(null),
+      address: new FormControl(null),
+      city: new FormControl(null),
+      postalCode: new FormControl(null),
+      mobileNumber: new FormControl(null),
+      vatNumber: new FormControl(null)
     })
     this.getStudents();
     this.direction = [
@@ -110,5 +116,17 @@ export class StudentSearchComponent implements OnInit {
 
   get name() {
     return this.studentForm.get('name');
+  }
+
+  get postalCode(): FormControl {
+    return this.studentForm.get('postalCode') as FormControl;
+  }
+
+  get mobileNumber(): FormControl {
+    return this.studentForm.get('mobileNumber') as FormControl;
+  }
+
+  get vatNumber(): FormControl {
+    return this.studentForm.get('vatNumber') as FormControl;
   }
 }

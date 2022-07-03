@@ -105,7 +105,14 @@
 
           <div class="field">
             <label for="postalCode" class="block">Ταχυδρομικός κώδικας</label>
-            <input [readOnly]="isEditMode" id="postalCode" type="text" pInputText [formControl]="postalCode">
+            <p-inputNumber [readonly]="isEditMode"
+                           [formControl]="postalCode"
+                           id="postalCode"
+                           mode="decimal"
+                           [maxlength]="10"
+                           [useGrouping]="false"
+                           inputId="postalCode">
+            </p-inputNumber>
           </div>
 
         </div>
