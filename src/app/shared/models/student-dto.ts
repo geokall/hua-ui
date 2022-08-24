@@ -17,4 +17,6 @@ export interface StudentDTO {
   postalCode?: string;
   mobileNumber?: string;
   vatNumber?: string;
+
+  file?: string
 }
