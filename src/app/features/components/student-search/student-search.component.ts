@@ -18,6 +18,8 @@ export class StudentSearchComponent implements OnInit {
   student: any;
   editable: boolean | undefined;
   deleteStudent: boolean | undefined;
+  isMinioFileExist: boolean = false;
+
   //@ts-ignore
   formErrors: Message[];
   isLoading = true;
@@ -34,6 +36,7 @@ export class StudentSearchComponent implements OnInit {
     this.isLoading = true;
     this.studentForm = new FormGroup({
       id: new FormControl(null),
+      username: new FormControl(null),
       isVerified: new FormControl(Boolean),
       dateCreated: new FormControl(null),
       surname: new FormControl(null),
@@ -44,8 +47,14 @@ export class StudentSearchComponent implements OnInit {
       city: new FormControl(null),
       postalCode: new FormControl(null),
       mobileNumber: new FormControl(null),
-      vatNumber: new FormControl(null)
-    })
+      vatNumber: new FormControl(null),
+      file: new FormGroup({
+        actualFile: new FormControl(null),
+        fileName: new FormControl(null),
+        mimeType: new FormControl(null),
+      })
+    });
+
     this.getStudents();
     this.direction = [
       {name: 'Τεχνολογίες και Εφαρμογές Ιστού'},
@@ -85,7 +94,6 @@ export class StudentSearchComponent implements OnInit {
         this.studentForm.reset();
       },
       error => {
-        console.log("error", error);
         if (error.error != null) {
           this.formErrors = [
             {severity: 'error', detail: 'Υπήρξε σφάλμα'}
@@ -99,20 +107,16 @@ export class StudentSearchComponent implements OnInit {
     this.deleteStudent = false;
     this.studentForm.patchValue(student);
     this.newStudentDialog = true;
+
+    this.api.getMinioFile(this.username?.value).subscribe(file => {
+        this.getActualFile.setValue(file.actualFile);
+        this.getFileName.setValue(file.fileName);
+
+        this.isMinioFileExist = file.actualFile !== null;
+      },
+      error => {
+      });
   }
-
-  // deleteStudentForm(student: any) {
-  //   this.deleteStudent = true;
-  //   this.editable = false;
-  //   this.studentForm.patchValue(student);
-  //   this.newStudentDialog = true;
-  // }
-  //
-
-  //
-  // removeStudent() {
-  //   let creditor = this.studentForm.value;
-  // }
 
   get name() {
     return this.studentForm.get('name');
@@ -128,5 +132,25 @@ export class StudentSearchComponent implements OnInit {
 
   get vatNumber(): FormControl {
     return this.studentForm.get('vatNumber') as FormControl;
+  }
+
+  get username(): FormControl {
+    return this.studentForm.get('username') as FormControl;
+  }
+
+  get getFile() {
+    return this.studentForm.get('file') as FormGroup;
+  }
+
+  get getFileName() {
+    return this.getFile.get('fileName') as FormControl;
+  }
+
+  get getActualFile() {
+    return this.getFile.get('actualFile') as FormControl;
+  }
+
+  get getMimeType() {
+    return this.getFile.get('mimeType') as FormControl;
   }
 }

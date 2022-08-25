@@ -149,29 +149,8 @@
           <h3>Αρχείο</h3>
 
           <div class="formgroup-inline">
-
-            <table class="table table-hover">
-              <tr>
-<!--                <td *ngIf="getFile !== null" class="pb-2 pt-2" style="width: 40%;"><span>{{ '' }}</span></td>-->
-<!--                <td class="pb-2 pt-2" style="width: 20%;">-->
-<!--                    <i class="pi pi-file-pdf open" style="font-size: 1.5rem" (click)="redirectToMinio()"></i>-->
-<!--                </td>-->
-
-                <td class="pb-2 pt-2" style="width: 20%;">
-                  <div class="i.open">
-                    <p-fileUpload mode="basic" chooseLabel="File"
-                                  #gdprUpload id="file" name="file[]" accept=".pdf"
-                                  [showUploadButton]="false" [showCancelButton]="false"
-                                  (onBeforeUpload)="redirectToMinio()"
-                                  (onSelect)="onSelect($event, 'file', 'file')">
-                    </p-fileUpload>
-                  </div>
-                </td>
-
-              </tr>
-            </table>
-
-          </div>
+            <app-file [form]="form" [isMinioFileExist]="false"></app-file>
+        </div>
 
         </div>
 

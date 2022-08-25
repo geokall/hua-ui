@@ -41,6 +41,7 @@ import {ToggleButtonModule} from "primeng/togglebutton";
 import {HomeComponent} from "../home/home.component";
 import {PasswordComponent} from "../password/password.component";
 import {PasswordModule} from "primeng/password";
+import {FileComponent} from "../file/file.component";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {PasswordModule} from "primeng/password";
     StudentSearchComponent,
     StudentCreateComponent,
     HomeComponent,
-    PasswordComponent
+    PasswordComponent,
+    FileComponent
   ],
   imports: [
     CommonModule,

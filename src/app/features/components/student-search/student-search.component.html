@@ -189,6 +189,12 @@
       </div>
 
     </div>
+
+    <div class="field">
+      <label class="block">Αρχείο</label>
+      <app-file [form]="studentForm" [isMinioFileExist]="isMinioFileExist"></app-file>
+    </div>
+
     <div class="p-dialog-footer">
       <button pButton pRipple label="{{'Ακύρωση'}}" icon="pi pi-times" class="p-button-text"
               (click)="hideStudentDialog()"></button>

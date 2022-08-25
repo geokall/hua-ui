@@ -23,10 +23,8 @@ export class StudentCreateComponent implements OnInit {
   loading: boolean = false;
   successModal: boolean = false;
   errorModal: boolean = false;
-  isDisabled: boolean = true;
   isEditMode: boolean = false;
   isGraduateInfoEnabled: boolean = false;
-  isFileUploaded: boolean = false;
 
   studentDirections: StudentDirection[];
 
@@ -53,6 +51,7 @@ export class StudentCreateComponent implements OnInit {
   initForm(): void {
     this.form = new FormGroup({
       id: new FormControl(null),
+      username: new FormControl(null),
       surname: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
       fatherName: new FormControl(null),
@@ -151,71 +150,6 @@ export class StudentCreateComponent implements OnInit {
 
   get vatNumber(): FormControl {
     return this.form.get('vatNumber') as FormControl;
-  }
-
-  get getFile() {
-    return this.form.get('file') as FormGroup;
-  }
-
-  get getFileName() {
-    return this.getFile.get('fileName') as FormControl;
-  }
-
-  get getActualFile() {
-    return this.getFile.get('actualFile') as FormControl;
-  }
-
-  get getMimeType() {
-    return this.getFile.get('mimeType') as FormControl;
-  }
-
-  redirectToMinio() {
-    // this.api.getGdprFile().subscribe(response => {
-    //   let file = new Blob([response], {type: 'application/pdf'});
-    //   let fileURL = URL.createObjectURL(file);
-    window.open('http://huademo.ddns.net:9001/buckets/hua/browse');
-    // });
-  }
-
-  onSelect(event: { files: any; }, fileName: string, whichFile: string) {
-    for (let file of event.files) {
-      this.getBase64(file).then(base64encoded => {
-        console.log(file)
-        let base64encodedString = base64encoded as string;
-        let base64Format = base64encodedString.split(',')[1];
-        this.getActualFile.setValue(base64Format);
-        this.getFileName.setValue(file.name);
-        this.getMimeType.setValue(file.type);
-        // this.getFileName.setValue(base64Format);
-      })
-    }
-  }
-
-  updateFile(): void {
-    // let gdprFileDTO = this.gdprFile.value;
-    //
-    // this.api.updateGdprFile(gdprFileDTO).subscribe(result => {
-    //   this.messageService.add({
-    //     severity: 'success',
-    //     detail: 'test',
-    //   });
-    //
-    //   this.isGdprFileUpload = false;
-    //   this.gdprUpload.clear();
-    //
-    // }, error => {
-    //   console.log('error', error)
-    // })
-  }
-
-  getBase64(file: Blob) {
-
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = error => reject(error);
-    });
   }
 
 }
