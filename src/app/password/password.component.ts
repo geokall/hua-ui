@@ -43,6 +43,11 @@ export class PasswordComponent implements OnInit {
           severity: 'success',
           detail: 'Η αλλαγή κωδικού έγινε με επιτυχία',
         });
+
+        this.api.updateEventPassword(this.authService.getId()).subscribe(response => {
+        }, error => {
+
+        })
       },
       error => {
         if (error.error != null) {

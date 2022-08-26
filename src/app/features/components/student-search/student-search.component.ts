@@ -76,7 +76,7 @@ export class StudentSearchComponent implements OnInit {
       error => {
        this.messageService.add({
          severity: 'error',
-         detail: 'den efere',
+         detail: 'υπήρξε σφάλμα',
        });
       });
   }
@@ -84,7 +84,6 @@ export class StudentSearchComponent implements OnInit {
   updateStudent() {
     let creditor = this.studentForm.value;
     this.api.updateStudent(creditor).subscribe(studentDetails => {
-        console.log("success!", studentDetails);
         this.newStudentDialog = false;
         this.messageService.add({
           severity: 'success',

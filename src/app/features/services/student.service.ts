@@ -39,4 +39,8 @@ export class StudentService {
     return this.http.get<StudentFileDTO>(`${environment.serverUrl}/student/minio-file/${username}`);
   }
 
+  updateEventPassword(id: number): Observable<any> {
+    return this.http.put<any>(`${environment.serverUrl}/student/event-password/${id}`, null);
+  }
+
 }
