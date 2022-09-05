@@ -54,6 +54,7 @@ export class StudentCreateComponent implements OnInit {
       username: new FormControl(null),
       surname: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
+      personalEmail: new FormControl(null),
       fatherName: new FormControl(null),
       motherName: new FormControl(null),
       birthDate: new FormControl(null),
@@ -134,6 +135,10 @@ export class StudentCreateComponent implements OnInit {
 
   get address(): FormControl {
     return this.form.get('address') as FormControl;
+  }
+
+  get personalEmail(): FormControl {
+    return this.form.get('personalEmail') as FormControl;
   }
 
   get city(): FormControl {

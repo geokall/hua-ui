@@ -42,7 +42,6 @@ export class FileComponent implements OnInit {
   }
 
   onSelect(event: { files: any; }, fileName: string, whichFile: string) {
-    console.log(this.form)
     for (let file of event.files) {
       this.getBase64(file).then(base64encoded => {
         let base64encodedString = base64encoded as string;

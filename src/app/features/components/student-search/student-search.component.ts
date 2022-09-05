@@ -41,6 +41,7 @@ export class StudentSearchComponent implements OnInit {
       dateCreated: new FormControl(null),
       surname: new FormControl(null),
       name: new FormControl(null),
+      personalEmail: new FormControl(null),
       fatherName: new FormControl(null),
       motherName: new FormControl(null),
       address: new FormControl(null),
