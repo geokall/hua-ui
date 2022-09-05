@@ -150,7 +150,7 @@
 
         </div>
 
-        <div class="card">
+        <div class="card" *ngIf="!form?.get('id')?.value">
           <h3>Αρχείο</h3>
 
           <div class="formgroup-inline">
