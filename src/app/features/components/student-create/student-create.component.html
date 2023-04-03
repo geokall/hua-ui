@@ -17,6 +17,11 @@
             <input [readOnly]="isEditMode" id="name" type="text" pInputText formControlName="name">
           </div>
 
+          <div class="field">
+            <label for="name" class="block">Προσωπικό email</label>
+            <input [readOnly]="isEditMode" id="personalEmail" type="text" pInputText formControlName="personalEmail">
+          </div>
+
         </div>
 
         <div class="formgroup-inline">
@@ -142,6 +147,15 @@
                            inputId="vatNumber">
             </p-inputNumber>
           </div>
+
+        </div>
+
+        <div class="card" *ngIf="!form?.get('id')?.value">
+          <h3>Αρχείο</h3>
+
+          <div class="formgroup-inline">
+            <app-file [form]="form" [isMinioFileExist]="false"></app-file>
+        </div>
 
         </div>
 

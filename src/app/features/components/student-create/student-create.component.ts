@@ -23,7 +23,6 @@ export class StudentCreateComponent implements OnInit {
   loading: boolean = false;
   successModal: boolean = false;
   errorModal: boolean = false;
-  isDisabled: boolean = true;
   isEditMode: boolean = false;
   isGraduateInfoEnabled: boolean = false;
 
@@ -52,8 +51,10 @@ export class StudentCreateComponent implements OnInit {
   initForm(): void {
     this.form = new FormGroup({
       id: new FormControl(null),
+      username: new FormControl(null),
       surname: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
+      personalEmail: new FormControl(null),
       fatherName: new FormControl(null),
       motherName: new FormControl(null),
       birthDate: new FormControl(null),
@@ -65,6 +66,11 @@ export class StudentCreateComponent implements OnInit {
       postalCode: new FormControl(null),
       mobileNumber: new FormControl(null, Validators.required),
       vatNumber: new FormControl(null, Validators.required),
+      file: new FormGroup({
+        actualFile: new FormControl(null),
+        fileName: new FormControl(null),
+        mimeType: new FormControl(null),
+      })
     });
   }
 
@@ -129,6 +135,10 @@ export class StudentCreateComponent implements OnInit {
 
   get address(): FormControl {
     return this.form.get('address') as FormControl;
+  }
+
+  get personalEmail(): FormControl {
+    return this.form.get('personalEmail') as FormControl;
   }
 
   get city(): FormControl {

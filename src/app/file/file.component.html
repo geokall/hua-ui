@@ -1,0 +1,19 @@
+<table class="table table-hover">
+
+  <tr>
+    <td *ngIf="isMinioFileExist == true" class="pb-2 pt-2" style="width: 20%;" >
+      <i (click)="redirectToMinio()" class="pi pi-file-pdf open" style="font-size: 1.5rem">
+      </i>
+    </td>
+    <td class="pb-2 pt-2" style="width: 100%;">
+      <div class="i.open">
+        <p-fileUpload mode="basic" chooseLabel="File"
+                      #fileUpload id="file" name="file[]" accept=".pdf"
+                      [showUploadButton]="false" [showCancelButton]="false"
+                      (onSelect)="onSelect($event, 'file', 'file')">
+        </p-fileUpload>
+      </div>
+    </td>
+
+  </tr>
+</table>

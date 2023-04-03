@@ -1,27 +1,17 @@
-# HuaUi
+# Final project of Web information systems and IoT
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.
+## Overview
 
-## Development server
+This is the frontend component of the application. It is implemented in TypeScript, using Angular framework.  
+Prior experience on TypeScript/Angular is the reason this stack is selected.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Course implementation
 
-## Code scaffolding
+The purpose of the final project is to build a student profile providing certification through institution secretariat.
+Student must be able to add all the necessary information like studies, experience, scholarships, contact details,
+e.t.c).
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## External Components
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+1. Angular UI Component Library [PrimeNG](https://primeng.org/installation)
+2. Helper library for handling JWTs [angular-jwt](https://github.com/auth0/angular2-jwt)
