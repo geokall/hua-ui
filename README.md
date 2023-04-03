@@ -1,17 +1,17 @@
-# hua-ui
-
-This is a forked project from https://github.com./geogall/hua-ui  
-
-New packages are pushed at https://hub.docker.com/r/ba055482/hua-ui
+# Final project of Web information systems and IoT
 
 ## Overview
 
-This is the backend component of the application. We decided to use Angular because we had prior experience using it. Also the documentation is great, which can be really useful on complex scenarios.
+This is the frontend component of the application. It is implemented in TypeScript, using Angular framework.  
+Prior experience on TypeScript/Angular is the reason this stack is selected.
 
-In order to make the development process easier, we used some extra components.
+## Course implementation
 
-First of all, we used PrimeNG which is an Angular UI Component, which delivers customizable components like buttons, grid, forms, menu, messages e.t.c.
+The purpose of the final project is to build a student profile providing certification through institution secretariat.
+Student must be able to add all the necessary information like studies, experience, scholarships, contact details,
+e.t.c).
 
-Another useful component is Reactive Forms, which makes it easier to handle JSON.
+## External Components
 
-For the security implementation on front-end part we used an open source project (https://www.npmjs.com/package/@auth0/angular-jwt)
+1. Angular UI Component Library [PrimeNG](https://primeng.org/installation)
+2. Helper library for handling JWTs [angular-jwt](https://github.com/auth0/angular2-jwt)
